@@ -1,80 +1,87 @@
 # m5adc: M5Stack / M5Stick C Examples by Wataru KUNINO
 Let's learn IoT ready Analog Sensor device M5Stack and M5Stick C Programing with bokunimo.net.
 
-## ADC “‹Ú M5Stack / M5StickC ‚Å IoT ƒZƒ“ƒTŠJ”­“ü–å
-M5Stack »‚Ì IoTƒfƒoƒCƒX M5Stack ‚Ü‚½‚Í M5StickC ‚Æ“à‘ ‚Ì A/DƒRƒ“ƒo[ƒ^‚ðŽg‚Á‚ÄA IoT ƒZƒ“ƒTEƒfƒoƒCƒX‚ð»ì‚µ‚Ä‚Ý‚Ü‚µ‚å‚¤B  
-ŠJ”­ŠÂ‹«‚É‚ÍŽÀÛ‚Ì IoT ƒZƒ“ƒT‚ÌŠJ”­‚ÅŽg—p‚³‚ê‚Ä‚¢‚é C/C++ Œ¾Œê‚ÉG‚ê‚é‚½‚ß‚ÉA Arduino IDE ‚ðŽg—p‚µ‚Ü‚·B  
-- IoT ƒZƒ“ƒT C/C++ Œ¾Œê  
-- iIoT ƒT[ƒo Python Œ¾Œêj  
+## ADC æ­è¼‰ M5Stack / M5StickC ã§ IoT ã‚»ãƒ³ã‚µé–‹ç™ºå…¥é–€
+M5Stack è£½ã® IoTãƒ‡ãƒã‚¤ã‚¹ M5Stack ã¾ãŸã¯ M5StickC ã¨å†…è”µã® A/Dã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’ä½¿ã£ã¦ã€ IoT ã‚»ãƒ³ã‚µãƒ»ãƒ‡ãƒã‚¤ã‚¹ã‚’è£½ä½œã—ã¦ã¿ã¾ã—ã‚‡ã†ã€‚  
+é–‹ç™ºç’°å¢ƒã«ã¯å®Ÿéš›ã® IoT ã‚»ãƒ³ã‚µã®é–‹ç™ºã§ä½¿ç”¨ã•ã‚Œã¦ã„ã‚‹ C/C++ è¨€èªžã«è§¦ã‚Œã‚‹ãŸã‚ã«ã€ Arduino IDE ã‚’ä½¿ç”¨ã—ã¾ã™ã€‚  
+- IoT ã‚»ãƒ³ã‚µ C/C++ è¨€èªž  
+- ï¼ˆIoT ã‚µãƒ¼ãƒ Python è¨€èªžï¼‰  
 
-## ‘Î‰ž IoT ƒZƒ“ƒTEƒfƒoƒCƒX  
-ˆÈ‰º‚ÌƒfƒoƒCƒX‚ðŽg‚Á‚½ IoT ƒZƒ“ƒT ‚ð»ì‚µ‚Ü‚·B  
+## å¯¾å¿œ IoT ã‚»ãƒ³ã‚µãƒ»ãƒ‡ãƒã‚¤ã‚¹  
+ä»¥ä¸‹ã®ãƒ‡ãƒã‚¤ã‚¹ã‚’ä½¿ã£ãŸ IoT ã‚»ãƒ³ã‚µ ã‚’è£½ä½œã—ã¾ã™ã€‚  
 - M5Stack  
 - M5StickC  
 
+![èª¬æ˜Žå›³1](https://github.com/bokunimowakaru/m5adc/blob/image/image/DSC_0393.jpg)
+
 --------------------------------------------------------------------------------
 
-### ƒTƒ“ƒvƒ‹W  
-M5Stack —p‚ÌƒTƒ“ƒvƒ‹EƒvƒƒOƒ‰ƒ€‚Í m5stack ƒtƒHƒ‹ƒ_AM5Stick C —p‚ÌƒTƒ“ƒvƒ‹EƒvƒƒOƒ‰ƒ€‚Í m5stickc ‚ÉO—Í‚µ‚Ü‚µ‚½B  
+### ã‚µãƒ³ãƒ—ãƒ«é›†  
+M5Stack ç”¨ã®ã‚µãƒ³ãƒ—ãƒ«ãƒ»ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã¯ m5stack ãƒ•ã‚©ãƒ«ãƒ€ã€M5Stick C ç”¨ã®ã‚µãƒ³ãƒ—ãƒ«ãƒ»ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã¯ m5stickc ã«è¡†åŠ›ã—ã¾ã—ãŸã€‚  
 
 - example01_serial  
 	Example 01: ADC Input Voltage Monitor  
-	A/DƒRƒ“ƒo[ƒ^‚Ì“Ç‚Ý’l‚ðƒVƒŠƒAƒ‹Eƒ‚ƒjƒ^‚Ö•\Ž¦‚µ‚Ü‚·  
+	A/Dã‚³ãƒ³ãƒãƒ¼ã‚¿ã®èª­ã¿å€¤ã‚’ã‚·ãƒªã‚¢ãƒ«ãƒ»ãƒ¢ãƒ‹ã‚¿ã¸è¡¨ç¤ºã—ã¾ã™  
 
 - example02_lcd  
 	Example 02: ADC Input Voltage Checker  
-	A/DƒRƒ“ƒo[ƒ^‚Ì“Ç‚Ý’l‚ðLCD‚É”’l‚Å•\Ž¦‚µ‚Ü‚·  
+	A/Dã‚³ãƒ³ãƒãƒ¼ã‚¿ã®èª­ã¿å€¤ã‚’LCDã«æ•°å€¤ã§è¡¨ç¤ºã—ã¾ã™  
 
 - example03_meter  
 	Example 03: ADC Input Voltage Meter  
-	A/DƒRƒ“ƒo[ƒ^‚Ì“Ç‚Ý’l‚ðƒAƒiƒƒOEƒ[ƒ^•\Ž¦‚µ‚Ü‚·  
+	A/Dã‚³ãƒ³ãƒãƒ¼ã‚¿ã®èª­ã¿å€¤ã‚’ã‚¢ãƒŠãƒ­ã‚°ãƒ»ãƒ¡ãƒ¼ã‚¿è¡¨ç¤ºã—ã¾ã™  
 
 - example04_test  
 	Example 04: ADC for Loopback Tester  
-	A/DƒRƒ“ƒo[ƒ^‚Ì“Ç‚Ý’l‚ÌŒë·‚ðƒOƒ‰ƒt•\Ž¦‚µ‚Ü‚·  
+	A/Dã‚³ãƒ³ãƒãƒ¼ã‚¿ã®èª­ã¿å€¤ã®èª¤å·®ã‚’ã‚°ãƒ©ãƒ•è¡¨ç¤ºã—ã¾ã™  
+
+![å†…è”µADCã®èª¤å·®](https://github.com/bokunimowakaru/m5adc/blob/image/image/DSC_0426.jpg)
 
 - example05_ads1100
-	Example 05: ADS1100 Input Voltage MeteryŽ©“®ƒŒƒ“ƒW‘Î‰ž”Åz  
-	M5Stack»ƒIƒvƒVƒ‡ƒ“ ADC HAT (TI ADS1100)‚ðŽg—p  
-	A/DƒRƒ“ƒo[ƒ^ ADS1100 ‚Ì“Ç‚Ý’l‚ðƒAƒiƒƒOEƒ[ƒ^•\Ž¦‚µ‚Ü‚·  
+	Example 05: ADS1100 Input Voltage Meterã€è‡ªå‹•ãƒ¬ãƒ³ã‚¸å¯¾å¿œç‰ˆã€‘  
+	M5Stackè£½ã‚ªãƒ—ã‚·ãƒ§ãƒ³ ADC HAT (TI ADS1100)ã‚’ä½¿ç”¨  
+	A/Dã‚³ãƒ³ãƒãƒ¼ã‚¿ ADS1100 ã®èª­ã¿å€¤ã‚’ã‚¢ãƒŠãƒ­ã‚°ãƒ»ãƒ¡ãƒ¼ã‚¿è¡¨ç¤ºã—ã¾ã™  
+
+![ADS1100](https://github.com/bokunimowakaru/m5adc/blob/image/image/DSC_0400.jpg)
 
 - example06_udp  
 	Example 06: ADC Input Voltage UDP Sender  
-	A/DƒRƒ“ƒo[ƒ^‚Ì“Ç‚Ý’l‚ð Wi-Fi UDP ‘—M‚µ‚Ü‚·  
+	A/Dã‚³ãƒ³ãƒãƒ¼ã‚¿ã®èª­ã¿å€¤ã‚’ Wi-Fi UDP é€ä¿¡ã—ã¾ã™  
 
-## IoT ƒZƒ“ƒT Arduino IDE —p M5Stack ŠJ”­ŠÂ‹«
-Arduino IDE—p‚ÌM5Stack‚ÌŠJ”­ŠÂ‹«‚ðƒZƒbƒgƒAƒbƒv‚·‚é•û–@‚ÍA‰º‹L‚ÌM5StackŒöŽ®ƒTƒCƒg‚ð‚²——‚­‚¾‚³‚¢B  
+## IoT ã‚»ãƒ³ã‚µ Arduino IDE ç”¨ M5Stack é–‹ç™ºç’°å¢ƒ
+ä»¥ä¸‹ã«ã€Arduino IDE ç”¨ã® M5Stack ã®é–‹ç™ºç’°å¢ƒã‚’ã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ—ã™ã‚‹æ–¹æ³•ã‚’ç¤ºã—ã¾ã™ã€‚è©³ç´°ã«ã¤ã„ã¦ã¯ã€M5Stackå…¬å¼ã‚µã‚¤ãƒˆç­‰ã‚’ã”è¦§ãã ã•ã„ã€‚  
 
-- ƒCƒ“ƒg[ƒ‹•û–@F  
+- ã‚¤ãƒ³ãƒˆãƒ¼ãƒ«æ–¹æ³•ï¼š  
 	1. Arduino IDE  
-		‰º‹L‚©‚çƒ_ƒEƒ“ƒ[ƒh‚µ‚ÄƒCƒ“ƒXƒg[ƒ‹‚µ‚Ä‚­‚¾‚³‚¢  
+		ä¸‹è¨˜ã‹ã‚‰ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã—ã¦ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã—ã¦ãã ã•ã„  
 		- https://www.arduino.cc/en/Main/Software  
-	2. ESP32ƒ{[ƒhƒ}ƒl[ƒWƒƒ  
-		Arduino IDE‚Ìuƒtƒ@ƒCƒ‹vƒƒjƒ…[“à‚ÌuŠÂ‹«Ý’èv‚ðŠJ‚«Au’Ç‰Á‚Ìƒ{[ƒhƒ}ƒl[ƒWƒƒ‚ÌURLv‚É‰º‹L‚ð’Ç‰Á‚µ‚Ä‚­‚¾‚³‚¢B  
+	2. ESP32ãƒœãƒ¼ãƒ‰ãƒžãƒãƒ¼ã‚¸ãƒ£  
+		Arduino IDEã®ã€Œãƒ•ã‚¡ã‚¤ãƒ«ã€ãƒ¡ãƒ‹ãƒ¥ãƒ¼å†…ã®ã€Œç’°å¢ƒè¨­å®šã€ã‚’é–‹ãã€ã€Œè¿½åŠ ã®ãƒœãƒ¼ãƒ‰ãƒžãƒãƒ¼ã‚¸ãƒ£ã®URLã€ã«ä¸‹è¨˜ã‚’è¿½åŠ ã—ã¦ãã ã•ã„ã€‚  
 		- https://dl.espressif.com/dl/package_esp32_index.json  
-	3. ESP32ƒ‰ƒCƒuƒ‰ƒŠ  
-		Arduino IDE‚Ìuƒc[ƒ‹vƒƒjƒ…[“à‚Ìuƒ{[ƒhv‚ð‘I‘ð‚µAuƒ{[ƒhƒ}ƒl[ƒWƒƒv‚ðŠJ‚«AŒŸõ—“‚Éuesp32v‚ð“ü—Í‚µA‰º‹L‚ðƒCƒ“ƒXƒg[ƒ‹‚µ‚Ä‚­‚¾‚³‚¢B  
+	3. ESP32ãƒ©ã‚¤ãƒ–ãƒ©ãƒª  
+		Arduino IDEã®ã€Œãƒ„ãƒ¼ãƒ«ã€ãƒ¡ãƒ‹ãƒ¥ãƒ¼å†…ã®ã€Œãƒœãƒ¼ãƒ‰ã€ã‚’é¸æŠžã—ã€ã€Œãƒœãƒ¼ãƒ‰ãƒžãƒãƒ¼ã‚¸ãƒ£ã€ã‚’é–‹ãã€æ¤œç´¢æ¬„ã«ã€Œesp32ã€ã‚’å…¥åŠ›ã—ã€ä¸‹è¨˜ã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã—ã¦ãã ã•ã„ã€‚  
 		- esp32 by Espressid Systems  
-	4. M5Stackƒ‰ƒCƒuƒ‰ƒŠ(M5Core and M5Stick)  
-		Arduino IDE‚ÌuƒXƒPƒbƒ`vƒƒjƒ…[“à‚Ìuƒ‰ƒCƒuƒ‰ƒŠ‚ðƒCƒ“ƒNƒ‹[ƒhv‚ð‘I‘ð‚µAuƒ‰ƒCƒuƒ‰ƒŠ‚ðŠÇ—v‚ðŠJ‚«AŒŸõ—“‚É‰º‹L‚ð“ü—Í‚µAƒCƒ“ƒXƒg[ƒ‹‚µ‚Ä‚­‚¾‚³‚¢B  
+	4. M5Stackãƒ©ã‚¤ãƒ–ãƒ©ãƒª(M5Core and M5Stick)  
+		Arduino IDEã®ã€Œã‚¹ã‚±ãƒƒãƒã€ãƒ¡ãƒ‹ãƒ¥ãƒ¼å†…ã®ã€Œãƒ©ã‚¤ãƒ–ãƒ©ãƒªã‚’ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰ã€ã‚’é¸æŠžã—ã€ã€Œãƒ©ã‚¤ãƒ–ãƒ©ãƒªã‚’ç®¡ç†ã€ã‚’é–‹ãã€æ¤œç´¢æ¬„ã«ä¸‹è¨˜ã‚’å…¥åŠ›ã—ã€ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã—ã¦ãã ã•ã„ã€‚  
 		- M5Stack  
 		- M5StickC  
-	5. Arduino IDE‚Ì[ƒc[ƒ‹nƒƒjƒ…[“à‚Ìmƒ{[ƒhn‚ÅAŽg—p‚·‚éƒfƒoƒCƒX‚ð‘I‘ð‚µ‚Ä‚­‚¾‚³‚¢B  
+	5. Arduino IDEã®[ãƒ„ãƒ¼ãƒ«ï¼½ãƒ¡ãƒ‹ãƒ¥ãƒ¼å†…ã®ï¼»ãƒœãƒ¼ãƒ‰ï¼½ã§ã€ä½¿ç”¨ã™ã‚‹ãƒ‡ãƒã‚¤ã‚¹ã‚’é¸æŠžã—ã¦ãã ã•ã„ã€‚  
 		- M5Srack-Core-ESP32  
 		- M5Stick-C  
 	
-	iÅV”ÅE‰pŒêjhttps://docs.m5stack.com/#/en/arduino/arduino_development  
+- M5Stackå…¬å¼ã‚µã‚¤ãƒˆã®æƒ…å ±ï¼š  
+	ï¼ˆæœ€æ–°ç‰ˆãƒ»è‹±èªžï¼‰https://docs.m5stack.com/#/en/arduino/arduino_development  
 
 --------------------------------------------------------------------------------
 
-## ‘Î‰ž IoT ƒT[ƒoEƒfƒoƒCƒX  
-ˆÈ‰º‚ÌƒfƒoƒCƒX‚ðŽg‚Á‚½ IoT ƒT[ƒo ‚ð»ì‚µ‚Ü‚·B  
+## å¯¾å¿œ IoT ã‚µãƒ¼ãƒãƒ»ãƒ‡ãƒã‚¤ã‚¹  
+ä»¥ä¸‹ã®ãƒ‡ãƒã‚¤ã‚¹ã‚’ä½¿ã£ãŸ IoT ã‚µãƒ¼ãƒ ã‚’è£½ä½œã—ã¾ã™ã€‚  
 - Raspberry Pi  
-- Windows ã‚Å“®ì‚·‚é Cygwin + Python3 (Power Shell + Python 3‚Å‚à“®ìŠm”FÏ‚Ý)  
+- Windows ä¸Šã§å‹•ä½œã™ã‚‹ Cygwin + Python3 (Power Shell + Python 3ã§ã‚‚å‹•ä½œç¢ºèªæ¸ˆã¿)  
 
-## IoT ƒT[ƒo Raspberry Pi —p ŠJ”­ŠÂ‹«
+## IoT ã‚µãƒ¼ãƒ Raspberry Pi ç”¨ é–‹ç™ºç’°å¢ƒ
 
-- ƒZƒbƒgƒAƒbƒv•û–@  
+- ã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ—æ–¹æ³•  
 	pi@raspberry:~ $ git clone https://github.com/bokunimowakaru/m5adc  
 	pi@raspberry:~ $ cd m5adc/tools  
 	pi@raspberry:~/m5adc/tools $ ./udp_logger.py  
