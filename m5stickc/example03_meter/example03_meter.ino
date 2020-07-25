@@ -27,7 +27,7 @@ void loop(){                                    // 繰り返し実行する関�
     int adc, mv;                                // 変数adcとmvを定義
     adc = analogRead(ADC_PIN);                  // ADC値をadcへ代入
     mv = adc * 3300 / 4095;                     // ADC値を電圧に変換してmvへ代入
-    Serial.printf("adc=%d, v=%f\n", adc, mv);   // ADC値と電圧値mvをシリアル出力
+    Serial.printf("adc=%d, mv=%d\n", adc, mv);  // ADC値と電圧値mvをシリアル出力
     analogMeterNeedle(mv);                      // ADCの電圧値をメータ表示
     delay(500);                                 // 0.5秒（500ms）の待ち時間処理
 }
