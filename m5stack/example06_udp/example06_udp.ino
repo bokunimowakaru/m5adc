@@ -1,11 +1,11 @@
 /*******************************************************************************
-Example 06: ADC Input Voltage UDP Sender for M5StickC Wi-Fi
+Example 06: ADC Input Voltage UDP Sender for M5Stack Wi-Fi
 ・A/Dコンバータの読み値をWi-Fi UDP送信します
 
                                           Copyright (c) 2019-2020 Wataru KUNINO
 *******************************************************************************/
 
-#include <M5StickC.h>                           // M5StickC用ライブラリ
+#include <M5Stack.h>                            // M5Stack用ライブラリ
 #include <WiFi.h>                               // ESP32用WiFiライブラリ
 #include <WiFiUdp.h>                            // UDP通信を行うライブラリ
 #define SSID "iot-core-esp32"                   // 無線LANアクセスポイントのSSID
@@ -36,13 +36,13 @@ void loop(){                                    // 繰り返し実行する関�
     
     /* LCD表示 */
     M5.Lcd.fillScreen(BLACK);                   // LCDを消去
-    M5.Lcd.setCursor(0, 4, 1);                  // 文字座標と文字サイズ1を設定
+    M5.Lcd.setCursor(0, 0, 4);                  // 文字座標と文字サイズ4を設定
     M5.Lcd.println(IP);                         // UDP送信先IPアドレスを表示
-    M5.Lcd.setCursor(0, 40, 2);                 // 文字座標と文字サイズ2を設定
-    M5.Lcd.drawRect(0, 140, 80, 16, WHITE);     // バー表示枠を描画
-    M5.Lcd.fillRect(2, 142, 76 * adc / 4095, 12, GREEN);    // バー表示
-    M5.Lcd.printf("adc\n%d\n\n", adc);          // ADC値をLCDに表示
-    M5.Lcd.printf("voltage\n%.3f V", mv / 1000); // 電圧値VをLCDに表示
+    M5.Lcd.setCursor(0, 48);                 // 文字座標と文字サイズ4を設定
+    M5.Lcd.drawRect(0, 160, 320, 16, WHITE);    // バー表示枠を描画
+    M5.Lcd.fillRect(2, 162, 316 * adc / 4095, 12, GREEN);    // バー表示
+    M5.Lcd.printf("adc %d\n\n", adc);           // ADC値をLCDに表示
+    M5.Lcd.printf("voltage %.3f V\n", mv / 1000); // 電圧値VをLCDに表示
 
     /* UDP送信 */
     udp.beginPacket(IP, PORT);                  // UDP送信先を設定
