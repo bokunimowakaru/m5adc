@@ -17,7 +17,7 @@ M5Stack 製の IoTデバイス M5Stack または M5StickC と内蔵の A/Dコン
 --------------------------------------------------------------------------------
 
 ### サンプル集  
-M5Stack 用のサンプル・プログラムは m5stack フォルダ、M5Stick C 用のサンプル・プログラムは m5stickc に衆力しました。  
+M5Stack 用のサンプル・プログラムは m5stack フォルダ、M5Stick C 用のサンプル・プログラムは m5stickc に収録しました。  
 
 - example01_serial  
 	Example 01: ADC Input Voltage Monitor  
@@ -34,15 +34,17 @@ M5Stack 用のサンプル・プログラムは m5stack フォルダ、M5Stick C
 - example04_test  
 	Example 04: ADC for Loopback Tester  
 	A/Dコンバータの読み値の誤差をグラフ表示します  
-
-![内蔵ADCの誤差](https://github.com/bokunimowakaru/m5adc/blob/image/image/DSC_0426.jpg)
+	  
+	![内蔵ADCの誤差](https://github.com/bokunimowakaru/m5adc/blob/image/image/DSC_0426.jpg)  
+	左下から右上に向かう斜め曲線の横軸はDAC出力、縦軸はADC値。斜め直線との乖離が誤差。中央の横曲線は誤差。  
 
 - example05_ads1100
 	Example 05: ADS1100 Input Voltage Meter【自動レンジ対応版】  
 	M5Stack製オプション ADC HAT (TI ADS1100)を使用  
 	A/Dコンバータ ADS1100 の読み値をアナログ・メータ表示します  
-
-![ADS1100](https://github.com/bokunimowakaru/m5adc/blob/image/image/DSC_0400.jpg)
+	  
+	![ADS1100](https://github.com/bokunimowakaru/m5adc/blob/image/image/DSC_0400.jpg)  
+	M5Stack製オプション ADC HAT (TI ADS1100)を装着したときの様子。  
 
 - example06_udp  
 	Example 06: ADC Input Voltage UDP Sender  
