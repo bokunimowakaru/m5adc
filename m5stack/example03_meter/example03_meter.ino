@@ -19,8 +19,8 @@ https://docs.m5stack.com/#/en/arduino/arduino_api
 
 void setup(){                                   // 起動時に一度だけ実行する関数
     M5.begin();                                 // M5Stack用ライブラリの起動
-    M5.Lcd.setBrightness(100);                  // LCDの輝度を100に設定
-    pinMode(ADC_PIN, ANALOG);                   // GPIO36をアナログ入力に
+    M5.Lcd.setBrightness(150);                  // LCDの輝度を150に設定
+    pinMode(ADC_PIN, ANALOG);                   // GPIO 36 をアナログ入力に
     analogMeterInit("mV", "ADC G36", 0, 3000);  // アナログ・メータの初期化
 }
 

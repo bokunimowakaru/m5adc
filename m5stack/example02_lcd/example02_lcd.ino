@@ -19,14 +19,13 @@ https://docs.m5stack.com/#/en/arduino/arduino_api
 
 void setup(){                                   // 起動時に一度だけ実行する関数
     M5.begin();                                 // M5Stack用ライブラリの起動
-    M5.Lcd.setBrightness(100);                  // LCDの輝度を100に設定
     pinMode(ADC_PIN, ANALOG);                   // GPIO36をアナログ入力に
 }
 
 void loop(){                                    // 繰り返し実行する関数
     int i, adc, mv;                             // 変数iとadc、mvを定義
     M5.Lcd.fillScreen(BLACK);                   // LCDを消去
-    for(i = 0; i < 10; i++){                    // 変数iが6未満で以下を繰り返し
+    for(i = 0; i < 10; i++){                    // 変数iが10未満で以下を繰り返し
         adc = analogRead(ADC_PIN);              // ADC値をadcへ代入
         mv = adc * 3300 / 4095;                 // ADC値を電圧に変換してmvへ代入
         M5.Lcd.setCursor(12, 22 * i + 2, 4);    // 文字座標と文字大(4倍)を設定

@@ -20,7 +20,6 @@ https://docs.m5stack.com/#/en/arduino/arduino_api
 
 void setup(){                                   // 起動時に一度だけ実行する関数
     M5.begin();                                 // M5Stack用ライブラリの起動
-    M5.Lcd.setBrightness(180);                  // LCDの輝度を100に設定
     pinMode(DAC_PIN, OUTPUT);                   // GPIO26を出力に
     pinMode(ADC_PIN, ANALOG);                   // GPIO36をアナログ入力に
 }
@@ -30,19 +29,19 @@ void loop(){                                    // 繰り返し実行する関�
 
     /* 罫線描画部 */
     M5.Lcd.fillScreen(BLACK);                   // LCDを消去
-    M5.Lcd.drawRect(0, 0, 320, 234, BLUE);      // 座標0,0から320x234の箱を描画
-    for(y = 0; y < 233; y += 39) M5.Lcd.drawLine(0,y,319,y, BLUE);  // 罫線Y描画
-    for(x = 0; x < 319; x += 40) M5.Lcd.drawLine(x,0,x,233, BLUE);  // 罫線X描画
+    M5.Lcd.drawRect(0, 0, 320, 232, BLUE);      // 座標0,0から320x234の箱を描画
+    for(y = 0; y < 231; y += 29) M5.Lcd.drawLine(0,y,319,y, BLUE);  // 罫線Y描画
+    for(x = 0; x < 319; x += 40) M5.Lcd.drawLine(x,0,x,231, BLUE);  // 罫線X描画
 
     /* グラフ作成部 */
     for(x = 0; x < 320; x++){                   // 変数x=0～319まで繰り返し
         dac = 255 * x / 319;                    // DAC出力値(0～255)を設定
         dacWrite(DAC_PIN, dac);                 // 変数dacの値をDAC出力
         adc = analogRead(ADC_PIN);              // ADC値をadcへ代入
-        M5.Lcd.drawPixel(x, 234 - 234 * dac / 255, GREEN);  // DAC値をプロット
-        M5.Lcd.drawPixel(x, 234 - 234 * adc /4095, WHITE);  // ADC値をプロット
-        y = 117 - adc / 16 + dac;               // DAC出力とADC入力の誤差を計算
-        M5.Lcd.drawPixel(x, 117, RED);          // 誤差0の値(80)をプロット
+        M5.Lcd.drawPixel(x, 232 - 232 * dac / 255, GREEN);  // DAC値をプロット
+        M5.Lcd.drawPixel(x, 232 - 232 * adc /4095, WHITE);  // ADC値をプロット
+        y = 116 - adc / 16 + dac;               // DAC出力とADC入力の誤差を計算
+        M5.Lcd.drawPixel(x, 116, RED);          // 誤差0の値(80)をプロット
         M5.Lcd.drawPixel(x, y, WHITE);          // 誤差値をプロット
     }
     delay(1000);

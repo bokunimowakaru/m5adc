@@ -19,8 +19,7 @@ https://docs.m5stack.com/#/en/arduino/arduino_api
 #define ADC_PIN 36                              // HAT部の GPIO 36 ピン(ADC1_0)
 
 void setup(){                                   // 起動時に一度だけ実行する関数
-    M5.begin();                                 // M5Stack用ライブラリの起動
-    M5.Axp.ScreenBreath(7 + 3);                 // LCDの輝度を3に設定
+    M5.begin();                                 // M5StickC用ライブラリの起動
     pinMode(DAC_PIN, OUTPUT);                   // HAT部のGPIO26を出力に
     pinMode(ADC_PIN, ANALOG);                   // HAT部のGPIO36をアナログ入力に
 }

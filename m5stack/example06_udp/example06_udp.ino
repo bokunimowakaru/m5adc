@@ -18,6 +18,7 @@ IPAddress IP;                                   // ブロードキャストIP保
 void setup(){                                   // 起動時に一度だけ実行する関数
     M5.begin();                                 // M5Stack用ライブラリの起動
     pinMode(ADC_PIN, ANALOG);                   // GPIO36をアナログ入力に
+    delay(500);                                 // 電源安定待ち時間処理0.5秒
     WiFi.mode(WIFI_STA);                        // 無線LANを【子機】モードに設定
     WiFi.begin(SSID,PASS);                      // 無線LANアクセスポイントへ接続
     while(WiFi.status() != WL_CONNECTED){       // 接続に成功するまで待つ
@@ -33,13 +34,13 @@ void loop(){                                    // 繰り返し実行する関�
     int adc;                                    // 変数adcを定義
     float mv;                                   // 浮動小数点数型変数mvを定義
     adc = analogRead(ADC_PIN);                  // ADC値をadcへ代入
-    mv = adc * 3300. / 4095.;                   // ADC値を電圧に変換してmvへ代入
+    mv = (float)adc * 3300. / 4095.;            // ADC値を電圧に変換してmvへ代入
     
     /* LCD表示 */
     M5.Lcd.fillScreen(BLACK);                   // LCDを消去
     M5.Lcd.setCursor(0, 0, 4);                  // 文字座標と文字サイズ4を設定
     M5.Lcd.println(IP);                         // UDP送信先IPアドレスを表示
-    M5.Lcd.setCursor(0, 48);                 // 文字座標と文字サイズ4を設定
+    M5.Lcd.setCursor(0, 48);                    // 文字座標と文字サイズ4を設定
     M5.Lcd.drawRect(0, 160, 320, 16, WHITE);    // バー表示枠を描画
     M5.Lcd.fillRect(2, 162, 316 * adc / 4095, 12, GREEN);    // バー表示
     M5.Lcd.printf("adc %d\n\n", adc);           // ADC値をLCDに表示
