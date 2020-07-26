@@ -10,9 +10,10 @@ M5Stack 製の IoTデバイス M5Stack または M5StickC と内蔵の A/Dコン
 ## 対応 IoT センサ・デバイス  
 以下のデバイスを使った IoT センサ を製作します（両方のデバイスのサンプル・プログラムを用意してあるので、実験に必要なのは、どちらか1台です）。  
 - M5Stack  
-- M5StickC  
+	![M5Stack](https://github.com/bokunimowakaru/m5adc/blob/image/image/DSC_0415.jpg)
 
-![説明図1](https://github.com/bokunimowakaru/m5adc/blob/image/image/DSC_0393.jpg)
+- M5StickC  
+	![M5StickC](https://github.com/bokunimowakaru/m5adc/blob/image/image/DSC_0418.jpg)
 
 --------------------------------------------------------------------------------
 
@@ -30,12 +31,16 @@ M5Stack 用のサンプル・プログラムは m5stack フォルダ、M5Stick C
 - example03_meter  
 	Example 03: ADC Input Voltage Meter  
 	A/Dコンバータの読み値をアナログ・メータ表示します  
+	
+	![メータ表示](https://github.com/bokunimowakaru/m5adc/blob/image/image/DSC_0393.jpg)  
+	M5Stick C でアナログ・メータ表示を行ったときの様子。
 
 - example04_test  
 	Example 04: ADC for Loopback Tester  
 	A/Dコンバータの読み値の誤差をグラフ表示します  
 	  
-	![内蔵ADCの誤差](https://github.com/bokunimowakaru/m5adc/blob/image/image/DSC_0440.jpg)  
+	![M5StickC 内蔵ADCの誤差](https://github.com/bokunimowakaru/m5adc/blob/image/image/DSC_0389.jpg)
+	![M5Stack 内蔵ADCの誤差](https://github.com/bokunimowakaru/m5adc/blob/image/image/DSC_0440.jpg)  
 	左下から右上に向かう斜め曲線の横軸はDAC出力、縦軸はADC値。斜め直線との乖離が誤差。中央の横曲線は誤差。  
 
 - example05_ads1100
