@@ -35,7 +35,7 @@ M5Stack 用のサンプル・プログラムは m5stack フォルダ、M5Stick C
 	Example 04: ADC for Loopback Tester  
 	A/Dコンバータの読み値の誤差をグラフ表示します  
 	  
-	![内蔵ADCの誤差](https://github.com/bokunimowakaru/m5adc/blob/image/image/DSC_0426.jpg)  
+	![内蔵ADCの誤差](https://github.com/bokunimowakaru/m5adc/blob/image/image/DSC_0440.jpg)  
 	左下から右上に向かう斜め曲線の横軸はDAC出力、縦軸はADC値。斜め直線との乖離が誤差。中央の横曲線は誤差。  
 
 - example05_ads1100
@@ -49,6 +49,13 @@ M5Stack 用のサンプル・プログラムは m5stack フォルダ、M5Stick C
 - example06_udp  
 	Example 06: ADC Input Voltage UDP Sender  
 	A/Dコンバータの読み値を Wi-Fi UDP 送信します  
+
+- example07_illum  
+	Example 07: Wi-Fi Illumination Sensor for M5StickC Wi-Fi  
+	照度センサ NJL7502L (新日本無線) の読み値を Wi-Fi UDP送信します  
+	
+	![ADS1100](https://github.com/bokunimowakaru/m5adc/blob/image/image/DSC_0432.jpg)  
+	M5Stack C に 照度センサ NJL7502L を接続したとうきの様子。  
 
 ## IoT センサ Arduino IDE 用 M5Stack 開発環境
 以下に、Arduino IDE 用の M5Stack の開発環境をセットアップする方法を示します。詳細については、M5Stack公式サイト等をご覧ください。  
