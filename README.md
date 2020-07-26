@@ -39,8 +39,7 @@ M5Stack 用のサンプル・プログラムは m5stack フォルダ、M5Stick C
 	Example 04: ADC for Loopback Tester  
 	A/Dコンバータの読み値の誤差をグラフ表示します  
 	  
-	![M5StickC 内蔵ADCの誤差](https://github.com/bokunimowakaru/m5adc/blob/image/image/DSC_0389.jpg)
-	![M5Stack 内蔵ADCの誤差](https://github.com/bokunimowakaru/m5adc/blob/image/image/DSC_0440.jpg)  
+	![M5StickC 内蔵ADCの誤差](https://github.com/bokunimowakaru/m5adc/blob/image/image/DSC_0389.jpg)![M5Stack 内蔵ADCの誤差](https://github.com/bokunimowakaru/m5adc/blob/image/image/DSC_0440.jpg)  
 	左下から右上に向かう斜め曲線の横軸はDAC出力、縦軸はADC値。斜め直線との乖離が誤差。中央の横曲線は誤差。  
 
 - example05_ads1100
