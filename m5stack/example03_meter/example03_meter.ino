@@ -15,11 +15,12 @@ https://docs.m5stack.com/#/en/arduino/arduino_api
 *******************************************************************************/
 
 #include <M5Stack.h>                            // M5Stack用ライブラリ
-#define ADC_PIN 36                              // HAT部の GPIO 36 ピン(ADC1_0)
+#define ADC_PIN 36                              // GPIO 36 ピン(ADC1_0)
 
 void setup(){                                   // 起動時に一度だけ実行する関数
     M5.begin();                                 // M5Stack用ライブラリの起動
     M5.Lcd.setBrightness(100);                  // LCDの輝度を100に設定
+    pinMode(ADC_PIN, ANALOG);                   // GPIO36をアナログ入力に
     analogMeterInit("mV", "ADC G36", 0, 3000);  // アナログ・メータの初期化
 }
 

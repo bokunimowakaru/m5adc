@@ -15,12 +15,14 @@ https://docs.m5stack.com/#/en/arduino/arduino_api
 *******************************************************************************/
 
 #include <M5Stack.h>                            // M5Stack用ライブラリ
-#define DAC_PIN 26                              // HAT部の GPIO 26 ピン(DAC2)
-#define ADC_PIN 36                              // HAT部の GPIO 36 ピン(ADC1_0)
+#define DAC_PIN 26                              // GPIO 26 ピン(DAC2)
+#define ADC_PIN 36                              // GPIO 36 ピン(ADC1_0)
 
 void setup(){                                   // 起動時に一度だけ実行する関数
     M5.begin();                                 // M5Stack用ライブラリの起動
     M5.Lcd.setBrightness(180);                  // LCDの輝度を100に設定
+    pinMode(DAC_PIN, OUTPUT);                   // GPIO26を出力に
+    pinMode(ADC_PIN, ANALOG);                   // GPIO36をアナログ入力に
 }
 
 void loop(){                                    // 繰り返し実行する関数

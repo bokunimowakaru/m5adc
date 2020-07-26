@@ -17,6 +17,7 @@ IPAddress IP;                                   // ブロードキャストIP保
 
 void setup(){                                   // 起動時に一度だけ実行する関数
     M5.begin();                                 // M5Stack用ライブラリの起動
+    pinMode(ADC_PIN, ANALOG);                   // HAT部のGPIO36をアナログ入力に
     WiFi.mode(WIFI_STA);                        // 無線LANを【子機】モードに設定
     WiFi.begin(SSID,PASS);                      // 無線LANアクセスポイントへ接続
     while(WiFi.status() != WL_CONNECTED){       // 接続に成功するまで待つ

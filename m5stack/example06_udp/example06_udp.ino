@@ -12,11 +12,12 @@ Example 06: ADC Input Voltage UDP Sender for M5Stack Wi-Fi
 #define PASS "password"                         // パスワード
 #define PORT 1024                               // 送信のポート番号
 #define DEVICE "adcnv_5,"                       // デバイス名(5字+"_"+番号+",")
-#define ADC_PIN 36                              // HAT部の GPIO 36 ピン(ADC1_0)
+#define ADC_PIN 36                              // GPIO 36 ピン(ADC1_0)
 IPAddress IP;                                   // ブロードキャストIP保存用
 
 void setup(){                                   // 起動時に一度だけ実行する関数
     M5.begin();                                 // M5Stack用ライブラリの起動
+    pinMode(ADC_PIN, ANALOG);                   // GPIO36をアナログ入力に
     WiFi.mode(WIFI_STA);                        // 無線LANを【子機】モードに設定
     WiFi.begin(SSID,PASS);                      // 無線LANアクセスポイントへ接続
     while(WiFi.status() != WL_CONNECTED){       // 接続に成功するまで待つ

@@ -19,6 +19,7 @@ https://docs.m5stack.com/#/en/arduino/arduino_api
 
 void setup(){                                   // 起動時に一度だけ実行する関数
     M5.begin();                                 // M5Stack用ライブラリの起動
+    pinMode(ADC_PIN, ANALOG);                   // HAT部のGPIO36をアナログ入力に
 }
 
 void loop(){                                    // 繰り返し実行する関数
