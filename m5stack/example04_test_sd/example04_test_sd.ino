@@ -14,6 +14,7 @@ https://github.com/fukuen/M5Stack_Screen_Capture
 #include <M5Stack.h>                            // M5Stack用ライブラリ
 #define DAC_PIN 26                              // GPIO 26 ピン(DAC2)
 #define ADC_PIN 36                              // GPIO 36 ピン(ADC1_0)
+int mode = 0;                                   // 測定モード
 
 void setup(){                                   // 起動時に一度だけ実行する関数
     M5.begin();                                 // M5Stack用ライブラリの起動
@@ -42,7 +43,18 @@ void loop(){                                    // 繰り返し実行する関�
     for(x = 0; x < 320; x++){                   // 変数x=0～319まで繰り返し
         dac = 255 * x / 319;                    // DAC出力値(0～255)を設定
         dacWrite(DAC_PIN, dac);                 // 変数dacの値をDAC出力
-        adc = analogRead(ADC_PIN);              // ADC値をadcへ代入
+        switch(mode){
+            case 1:
+                adc = analogRead(ADC_PIN);      // ADC値をadcへ代入
+                adc = (int)ad_correction(adc);
+                break;
+            case 2:
+                adc = (int)adc_adapted_att(ADC_PIN);
+                break;
+            default:
+                adc = analogRead(ADC_PIN);      // ADC値をadcへ代入
+                break;
+        }
         M5.Lcd.drawPixel(x, 232 - 232 * dac / 255, GREEN);  // DAC値をプロット
         M5.Lcd.drawPixel(x, 232 - 232 * adc /4095, WHITE);  // ADC値をプロット
         y = 116 - adc / 16 + dac;               // DAC出力とADC入力の誤差を計算
@@ -66,6 +78,13 @@ void loop(){                                    // 繰り返し実行する関�
     M5.Speaker.tone(440);                       // スピーカ出力 440Hzの音を出力
     delay(100);                                 // 100msの待ち時間処理
     M5.Speaker.end();                           // スピーカ出力を停止する
-    M5.Lcd.println("Press the center button [B]");
-    while(!M5.BtnB.read()) delay(10);           // Bボタンが押されるまで待機
+    M5.Lcd.println("Press the button [A]:Raw [B]:Cor [C]:Cor+Att");
+    mode = -1;
+    while(mode < 0){
+        M5.update();                            // ボタン情報を更新
+        if(M5.BtnA.wasPressed()) mode = 0;      // ボタンAが押されていた時
+        if(M5.BtnB.wasPressed()) mode = 1;      // ボタンAが押されていた時
+        if(M5.BtnC.wasPressed()) mode = 2;      // ボタンAが押されていた時
+        delay(1);
+    }
 }
