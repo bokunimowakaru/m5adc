@@ -43,6 +43,12 @@ M5Stack 用のサンプル・プログラムは m5stack フォルダ、M5Stick C
 	<img src="https://github.com/bokunimowakaru/m5adc/blob/image/image/DSC_0440.jpg"><br>  
 	左下から右上に向かう斜め曲線の横軸はDAC出力、縦軸はADC値。斜め直線との乖離が誤差。中央の横曲線は誤差。  
 
+- example04_test_sd (M5Stackのみ)  
+	A/Dコンバータの非線形歪を補正し、変換精度を高めます  
+	
+	![非線形歪補正効果](https://github.com/bokunimowakaru/m5adc/blob/image/image/fig03.jpg)  
+	左＝補正無し、中央＝歪補正有、右＝歪補正＋アッテネータ調節
+
 - example05_ads1100
 	Example 05: ADS1100 Input Voltage Meter【自動レンジ対応版】  
 	M5Stack製オプション ADC HAT (TI ADS1100)を使用  
