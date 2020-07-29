@@ -10,7 +10,10 @@ float mvAnalogIn(uint8_t PIN, float offset)
 https://github.com/bokunimowakaru/esp/blob/master/2_example/example36_le/
 *******************************************************************************/
 
-float mvAnalogIn_correction(int adc, float offset = 0.0){
+#define mvAnalogIn_GAIN 1.09
+#define mvAnalogIn_OFFSET -0.02           // 動作最小電圧 0.0 ～ 0.1(V)程度
+
+float mvAnalogIn_correction(int adc, float offset, float gain){
     float ad3;
     
     if( adc > 2599 ){
@@ -20,6 +23,7 @@ float mvAnalogIn_correction(int adc, float offset = 0.0){
     }else{
         ad3 = 8.378998e-4 * (float)adc + 8.158714e-2 + offset;
     }
+    ad3 *= mvAnalogIn_GAIN;
     if( ad3 < 0.0 ) ad3 = 0.0;
     if( ad3 > 3.3 ) ad3 = 3.3;
     Serial.print("ADC (ATT=3;11dB) = ");
@@ -29,18 +33,13 @@ float mvAnalogIn_correction(int adc, float offset = 0.0){
     return ad3 * 1000.;
 }
 
-float mvAnalogIn(uint8_t PIN){
-    return mvAnalogIn(PIN, 0.0);            // 動作最小電圧 0.0 ～ 0.1(V)程度
-//  return mvAnalogIn(PIN, 1.075584e-1);
-}
-
-float mvAnalogIn(uint8_t PIN, float offset){
+float mvAnalogIn(uint8_t PIN, float offset, float gain){
     int in0,in3;
     float ad0,ad3;
     
     analogSetPinAttenuation(PIN,ADC_11db);
     in3=analogRead(PIN);
-    ad3 = mvAnalogIn_correction(in3, offset) / 1000.; 
+    ad3 = mvAnalogIn_correction(in3, offset, gain) / 1000.; 
     if( in3 < 200 ){
         analogSetPinAttenuation(PIN,ADC_0db);
         in0=analogRead(PIN);
@@ -62,18 +61,34 @@ float mvAnalogIn(uint8_t PIN, float offset){
     return ad3 * 1000.;
 }
 
+float mvAnalogIn(uint8_t PIN, float offset){
+    return mvAnalogIn(PIN, offset, mvAnalogIn_GAIN); 
+}
+
+float mvAnalogIn(uint8_t PIN){
+    return mvAnalogIn(PIN, mvAnalogIn_OFFSET, mvAnalogIn_GAIN); 
+}
+
+float ad_correction(int adc, float offset, float gain){
+    return mvAnalogIn_correction(adc, offset, gain) / 3300. * 4095.;
+}
+
 float ad_correction(int adc, float offset){
-    return mvAnalogIn_correction(adc,offset) / 3300. * 4095.;
+    return mvAnalogIn_correction(adc, offset, mvAnalogIn_GAIN) / 3300. * 4095.;
 }
 
 float ad_correction(int adc){
-    return ad_correction(adc, 0.0);
+    return mvAnalogIn_correction(adc, mvAnalogIn_OFFSET, mvAnalogIn_GAIN) / 3300. * 4095.;
+}
+
+float adc_adapted_att(uint8_t PIN, float offset, float gain){
+    return mvAnalogIn(PIN,offset, gain) / 3300. * 4095.;
 }
 
 float adc_adapted_att(uint8_t PIN, float offset){
-    return mvAnalogIn(PIN, offset) / 3300. * 4095.;
+    return mvAnalogIn(PIN, offset, mvAnalogIn_GAIN) / 3300. * 4095.;
 }
 
 float adc_adapted_att(uint8_t PIN){
-    return adc_adapted_att(PIN, 0.0);
+    return mvAnalogIn(PIN, mvAnalogIn_OFFSET, mvAnalogIn_GAIN) / 3300. * 4095.;
 }

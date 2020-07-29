@@ -31,13 +31,10 @@ void loop(){                                    // 繰り返し実行する関�
     for(y = 0; y < 231; y += 29) M5.Lcd.drawLine(0,y,319,y, BLUE);  // 罫線Y描画
     for(x = 0; x < 319; x += 40) M5.Lcd.drawLine(x,0,x,231, BLUE);  // 罫線X描画
 
-    char csvfile[40];
-    char filename[40];
-    struct tm *timenow;
-    time_t now = time(NULL);
-    timenow = gmtime(&now);
-    strftime(filename, sizeof(filename), "%Y%m%d%H%M%S.csv", timenow);
-    sprintf(csvfile, "%s_%s", "/adc_", filename);
+    char csvfile[10] = "/adc?.csv";
+    char bmpfile[10] = "/adc?.bmp";
+    csvfile[4] = (char)mode + '0';
+    bmpfile[4] = (char)mode + '0';
     File file = SD.open(csvfile, FILE_WRITE);
     prev = -1;
     for(x = 0; x < 320; x++){                   // 変数x=0～319まで繰り返し
@@ -69,7 +66,7 @@ void loop(){                                    // 繰り返し実行する関�
     }
     if(file){
         file.close();
-        bmpScreenServer("/adc");                // スクリーンショットを保存
+        bmpScreenServer(bmpfile);               // スクリーンショットを保存
     }else{
         M5.Lcd.println("SD Card ERROR");
         delay(1000);

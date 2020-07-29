@@ -168,6 +168,7 @@ boolean bmpScreenServer(String FileName)
  int Width = M5.Lcd.width();
  int Height = M5.Lcd.height();
 
+ /*
  char scfile[40];
  char filename[40];
  struct tm *timenow;
@@ -180,7 +181,9 @@ boolean bmpScreenServer(String FileName)
  Serial.println(scfile);
 
  File file = SD.open( scfile, FILE_WRITE );
-  
+ */
+ File file = SD.open( FileName, FILE_WRITE );
+ 
  // some preliminaries
  
  double dBytesPerPixel = ( (double) BitDepth ) / 8.0;
