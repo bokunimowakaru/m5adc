@@ -34,17 +34,17 @@ void loop(){                                    // 繰り返し実行する関�
         case 1:
             M5.Lcd.setCursor(2, 2, 2);  M5.Lcd.print("mode = Cor");
             M5.Lcd.setCursor(2, 18, 2); M5.Lcd.print("gain = " + String(get_mvAnalogIn_GAIN(),3));
-            M5.Lcd.setCursor(2, 34, 2); M5.Lcd.print("offs = " + String(get_mvAnalogIn_OFFSET(),3));
+            M5.Lcd.setCursor(2, 34, 2); M5.Lcd.print("offs = " + String(get_mvAnalogIn_OFFSET(),3) + " V");
             break;
         case 2:
             M5.Lcd.setCursor(2, 2, 2);  M5.Lcd.print("mode = Cor+Att");
             M5.Lcd.setCursor(2, 18, 2); M5.Lcd.print("gain = " + String(get_mvAnalogIn_GAIN(),3));
-            M5.Lcd.setCursor(2, 34, 2); M5.Lcd.print("offs = " + String(get_mvAnalogIn_OFFSET(),3));
+            M5.Lcd.setCursor(2, 34, 2); M5.Lcd.print("offs = " + String(get_mvAnalogIn_OFFSET(),3) + " V");
             break;
         default:
             M5.Lcd.setCursor(2, 2, 2);  M5.Lcd.print("mode = Raw");
             M5.Lcd.setCursor(2, 18, 2); M5.Lcd.print("gain = 1.000");
-            M5.Lcd.setCursor(2, 34, 2); M5.Lcd.print("offs = 0.000");
+            M5.Lcd.setCursor(2, 34, 2); M5.Lcd.print("offs = 0.000 V");
             break;
     }
     float err = 0.0;
@@ -82,8 +82,8 @@ void loop(){                                    // 繰り返し実行する関�
             err += pow((double)(dac * 16 - adc), 2.);
         }
     }
-    err = sqrt(err) / 256.;
-    M5.Lcd.setCursor(2, 50, 2); M5.Lcd.print("err2 = " + String(err,1));
+    err = 100 * sqrt(err) / 256.;
+    M5.Lcd.setCursor(2, 50, 2); M5.Lcd.print("err2 = " + String(err,1) + " \%");
     
     if(file){
         file.close();
