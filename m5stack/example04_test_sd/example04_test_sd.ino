@@ -89,7 +89,7 @@ void loop(){                                    // 繰り返し実行する関�
         file.close();
         bmpScreenServer(bmpfile);               // スクリーンショットを保存
     }else{
-        M5.Lcd.setCursor(2, 50, 2);
+        M5.Lcd.setCursor(2, 66, 2);
         M5.Lcd.print("SD Card ERROR");
         delay(1000);
     }
