@@ -47,12 +47,13 @@ void loop(){                                    // 繰り返し実行する関�
             M5.Lcd.setCursor(2, 34, 2); M5.Lcd.print("offs = 0.000 V");
             break;
     }
-    float err = 0.0;
     char csvfile[10] = "/adc?.csv";
     char bmpfile[10] = "/adc?.bmp";
     csvfile[4] = (char)mode + '0';
     bmpfile[4] = (char)mode + '0';
     File file = SD.open(csvfile, FILE_WRITE);
+    float err1 = 0.0;
+    float err2 = 0.0;
     prev = -1;
     for(x = 0; x < 320; x++){                   // 変数x=0～319まで繰り返し
         dac = 255 * x / 319;                    // DAC出力値(0～255)を設定
@@ -71,7 +72,10 @@ void loop(){                                    // 繰り返し実行する関�
         }
         M5.Lcd.drawPixel(x, 232 - 232 * dac / 255, GREEN);  // DAC値をプロット
         M5.Lcd.drawPixel(x, 232 - 232 * adc /4095, WHITE);  // ADC値をプロット
-        y = 116 - adc / 16 + dac;               // DAC出力とADC入力の誤差を計算
+        float e = (double)adc * 3.3 / 4095. - (double)dac * 3.3 / 255.;
+        err1 += e;
+        err2 += pow(e , 2.);
+        y = 116 - (int)(e / 3.3 * 232. + .5);   // DAC出力とADC入力の誤差を計算
         M5.Lcd.drawPixel(x, 116, RED);          // 誤差0の値(80)をプロット
         M5.Lcd.drawPixel(x, y, WHITE);          // 誤差値をプロット
         if(file && prev != dac){
@@ -79,17 +83,16 @@ void loop(){                                    // 繰り返し実行する関�
             snprintf(s, 256, "%d, %d\n", 16 * dac, adc);
             file.print(s);
             prev = dac;
-            err += pow((double)(dac * 16 - adc), 2.);
         }
     }
-    err = 100 * sqrt(err) / 256.;
-    M5.Lcd.setCursor(2, 50, 2); M5.Lcd.print("err2 = " + String(err,1) + " \%");
+    M5.Lcd.setCursor(2, 50, 2); M5.Lcd.print("err1 = " + String(err1 / 320.,3) + " V");
+    M5.Lcd.setCursor(2, 66, 2); M5.Lcd.print("err2 = " + String(sqrt((double)err2) / 320.,3) + " V");
     
     if(file){
         file.close();
         bmpScreenServer(bmpfile);               // スクリーンショットを保存
     }else{
-        M5.Lcd.setCursor(2, 66, 2);
+        M5.Lcd.setCursor(2, 82, 2);
         M5.Lcd.print("SD Card ERROR");
         delay(1000);
     }

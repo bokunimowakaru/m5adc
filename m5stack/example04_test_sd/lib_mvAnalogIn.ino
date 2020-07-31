@@ -115,13 +115,11 @@ float mvAnalogInCalibration(uint8_t PIN, uint8_t POUT){
             for(int dac = 0; dac < 256; dac++){
                 dacWrite(POUT, dac);
                 int adc = (int)(mvAnalogIn(PIN, offset, gain) / 3300. * 4095. + 0.5);
-                // err += pow((double)(dac * 16 - adc), 2.);
                 err += abs(dac * 16 - adc);
                 #ifdef DEBUG_ADC_CAL
                 //  if(dac % 32 == 0) Serial.printf("{'d':%d}, {'a':%d}, {'e':%d}\n",dac * 16, adc, err);
                 #endif
             }
-            // err = sqrt(err);
             if(err < err_min){
                 mvAnalogIn_GAIN = gain;
                 mvAnalogIn_OFFSET = offset;
