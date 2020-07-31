@@ -82,7 +82,7 @@ void loop(){                                    // 繰り返し実行する関�
             err += pow((double)(dac * 16 - adc), 2.);
         }
     }
-    err = sqrt(err);
+    err = sqrt(err) / 256.;
     M5.Lcd.setCursor(2, 50, 2); M5.Lcd.print("err2 = " + String(err,1));
     
     if(file){
