@@ -66,7 +66,7 @@ M5Stack 用のサンプル・プログラムは m5stack フォルダ、M5Stick C
 	照度センサ NJL7502L (新日本無線) の読み値を Wi-Fi UDP送信します  
 	
 	![NJL7502L](https://github.com/bokunimowakaru/m5adc/blob/image/image/DSC_0432.jpg)  
-	M5Stack C に 照度センサ NJL7502L を接続したとうきの様子。  
+	M5Stack C に 照度センサ NJL7502L を接続したときの様子。  
 
 ## IoT センサ Arduino IDE 用 M5Stack 開発環境
 以下に、Arduino IDE 用の M5Stack の開発環境をセットアップする方法を示します。詳細については、M5Stack公式サイト等をご覧ください。  
