@@ -33,7 +33,7 @@ void loop(){                                    // 繰り返し実行する関�
     int adc;                                    // 変数adcを定義
     float mv;                                   // 浮動小数点数型変数mvを定義
     adc = ads1100.Measure_Differential();       // ADC値をadcへ代入
-    mv = 4. * (float)adc * 3300. / 32767.;      // ADC値を電圧に変換してmvへ代入
+    mv = 4. * (float)adc * 3300. / 32768.;      // ADC値を電圧に変換してmvへ代入
     Serial.printf("adc=%d, mv=%f\n", adc, mv);  // ADC値と電圧値mvをシリアル出力
     
     /* 自動レンジ切替機能 */
