@@ -54,6 +54,7 @@ void loop(){                                    // 繰り返し実行する関�
     File file = SD.open(csvfile, FILE_WRITE);
     float err1 = 0.0;
     float err2 = 0.0;
+    float emax = 0.0;
     prev = -1;
     for(x = 0; x < 320; x++){                   // 変数x=0～319まで繰り返し
         dac = 255 * x / 319;                    // DAC出力値(0～255)を設定
@@ -73,8 +74,10 @@ void loop(){                                    // 繰り返し実行する関�
         M5.Lcd.drawPixel(x, 232 - 232 * dac / 255, GREEN);  // DAC値をプロット
         M5.Lcd.drawPixel(x, 232 - 232 * adc /4095, WHITE);  // ADC値をプロット
         float e = (double)adc * 3.3 / 4095. - (double)dac * 3.3 / 255.;
-        err1 += e;
+        // err1 += e;
+        err1 += fabsf(e);
         err2 += pow(e , 2.);
+        if( fabsf(e) > fabsf(emax) ) emax = e;
         y = 116 - (int)(e / 3.3 * 232. + .5);   // DAC出力とADC入力の誤差を計算
         M5.Lcd.drawPixel(x, 116, RED);          // 誤差0の値(80)をプロット
         M5.Lcd.drawPixel(x, y, WHITE);          // 誤差値をプロット
@@ -87,12 +90,13 @@ void loop(){                                    // 繰り返し実行する関�
     }
     M5.Lcd.setCursor(2, 50, 2); M5.Lcd.print("err1 = " + String(err1 / 320.,3) + " V");
     M5.Lcd.setCursor(2, 66, 2); M5.Lcd.print("err2 = " + String(sqrt((double)err2) / 320.,3) + " V");
+    M5.Lcd.setCursor(2, 82, 2); M5.Lcd.print("emax = " + String(emax,3) + " V");
     
     if(file){
         file.close();
         bmpScreenServer(bmpfile);               // スクリーンショットを保存
     }else{
-        M5.Lcd.setCursor(2, 82, 2);
+        M5.Lcd.setCursor(2, 98, 2);
         M5.Lcd.print("SD Card ERROR");
         delay(1000);
     }
