@@ -23,7 +23,7 @@ int range = 0;                                  // 自動レンジ用
 
 void setup(){                                   // 起動時に一度だけ実行する関数
     M5.begin();                                 // M5StickC用ライブラリの起動
-    Wire.begin();                               // I2Cを初期化
+    Wire.begin(0,26);                           // I2Cを初期化(GPIO 0, GPIO 26)
     Wire.beginTransmission(0x48);               // ADS1100(0x48)との通信を開始
     Wire.write(0x0C);                           // 連続,16bit-8SPS,Gain=1を設定
     Wire.endTransmission();                     // ADS1100(0x48)との通信を終了
