@@ -1,7 +1,7 @@
 /*******************************************************************************
 Example 05: ADS1100 Input Voltage Meter for M5Stack [Auto Range Display]
 ・M5Stack製オプション ADC UNIT (TI ADS1100)を使用
-　分圧=100K/(300K+100K) 8SPS時 15bit(単入力)
+　分圧=100K/(300K+100K) 8SPS時 16bit (単入力・15bit)
 ・A/Dコンバータ ADS1100 の読み値をアナログ・メータ表示します【自動レンジ対応版】
 
                                           Copyright (c) 2019-2020 Wataru KUNINO
@@ -17,22 +17,27 @@ https://docs.m5stack.com/#/en/arduino/arduino_api
 *******************************************************************************/
 
 #include <M5Stack.h>                            // M5Stack用ライブラリ
-#include "lib_ADS1100.h"                        // ADS1100用ライブラリ
+#include <Wire.h>                               // I2C通信用ライブラリ
 
-ADS1100 ads1100;                                // 変数(オブジェクト)ads1100生成
 int range = 0;                                  // 自動レンジ用
 
 void setup(){                                   // 起動時に一度だけ実行する関数
     M5.begin();                                 // M5Stack用ライブラリの起動
-    ads1100.getAddr_ADS1100(0x48);              // ADS1100 I2Cアドレスを0x48に
-    ads1100.begin();                            // ADS1100 を初期化
+    Wire.begin();                               // I2Cを初期化
+    Wire.beginTransmission(0x48);               // ADS1100(0x48)との通信を開始
+    Wire.write(0x0C);                           // 連続,16bit-8SPS,Gain=1を設定
+    Wire.endTransmission();                     // ADS1100(0x48)との通信を終了
     M5.Lcd.setBrightness(100);                  // LCDの輝度を100に設定
 }
 
 void loop(){                                    // 繰り返し実行する関数
-    int adc;                                    // 変数adcを定義
+    int16_t adc = 0x0000;                       // 変数adcを定義
     float mv;                                   // 浮動小数点数型変数mvを定義
-    adc = ads1100.Measure_Differential();       // ADC値をadcへ代入
+    Wire.requestFrom(0x48, 2);                  // 2バイトのデータを要求
+    if(Wire.available() >= 2){                  // 2バイト以上を受信
+        adc = ((int16_t)Wire.read()) << 8;      // 1バイト目を変数adcの上位へ
+        adc |= (int16_t)Wire.read();            // 2バイト目を変数adcの下位へ
+    }
     mv = 4. * (float)adc * 3300. / 32768.;      // ADC値を電圧に変換してmvへ代入
     Serial.printf("adc=%d, mv=%f\n", adc, mv);  // ADC値と電圧値mvをシリアル出力
     
