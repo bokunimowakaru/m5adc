@@ -2,10 +2,16 @@
 analogMeterInit
 analogMeterNeedle
 
-本ソースコードは下記からダウンロードし、一部、改変したものです。
+本ソースコードは下記からダウンロードし、国野亘がロガー用に改変しました。
 https://github.com/m5stack/M5Stack/blob/master/examples/Advanced/Display/TFT_Meter_linear/TFT_Meter_linear.ino
 
-ライセンスについては下記を参照してください。
+・160 x 80 サイズのメータ
+
+改変部の著作権は国野亘にあります。
+配布は自由ですが権利情報の変更は不可。補償や責任を負いません。
+Copyright (c) 2016-2020 Wataru KUNINO
+
+元のライセンスについては下記を参照してください。
 https://github.com/m5stack/M5Stack/blob/master/LICENSE
 
 m5stack/M5Stack is licensed under the MIT License
@@ -30,21 +36,21 @@ Updated by Bodmer for variable meter size
  */
 
 // Define meter size as 1 for M5.Lcd.rotation(0) or 1.3333 for M5.Lcd.rotation(1)
-#define M_SIZE 1.3333
+#define M_SIZE 0.6666
 
-#include <M5Stack.h>
+#include <M5StickC.h>
 
 #define TFT_GREY 0x5AEB
 
-String analogMeterUnit="%RH";
-String analogMeterName="%RH";
-int analogMeterMinVal = 0;
-int analogMeterMaxVal = 100;
+String analogMeterUnit1="mV";
+String analogMeterName1="Temp.";
+int analogMeterMinVal1 = 0;
+int analogMeterMaxVal1 = 3300;
 
-float ltx = 0;    // Saved x coord of bottom of needle
-uint16_t osx = M_SIZE*120, osy = M_SIZE*120; // Saved x & y coords
+float ltx1 = 0;    // Saved x coord of bottom of needle
+uint16_t osx1 = M_SIZE*120, osy1 = M_SIZE*120; // Saved x & y coords
+int old_analog1 =  -1; // Value last displayed
 uint32_t updateTime = 0;       // time for next update
-int old_analog =  -1; // Value last displayed
 /*
 int value[6] = {0, 0, 0, 0, 0, 0};
 int old_value[6] = { -1, -1, -1, -1, -1, -1};
@@ -80,11 +86,11 @@ void loop() {
 // #########################################################################
 void analogMeterInit()
 {
+  M5.Lcd.setRotation(1);
   M5.Lcd.setTextSize(1);
 
-  // Meter outline
-  M5.Lcd.fillRect(0, 0, M_SIZE*239, M_SIZE*126, TFT_GREY);
-  M5.Lcd.fillRect(5, 3, M_SIZE*230, M_SIZE*119, TFT_WHITE);
+  // Meter outline (0,0) to (319,83) 320x80
+  M5.Lcd.fillRect(0, 0, 160, 80, TFT_WHITE);
 
   M5.Lcd.setTextColor(TFT_BLACK);  // Text colour
 
@@ -145,11 +151,21 @@ void analogMeterInit()
       x0 = sx * (M_SIZE*100 + tl + 10) + M_SIZE*120;
       y0 = sy * (M_SIZE*100 + tl + 10) + M_SIZE*140;
       switch (i / 25) {
-        case -2: M5.Lcd.drawCentreString(String(analogMeterMinVal), x0, y0 - 12, 2); break;
-        case -1: M5.Lcd.drawCentreString(String((analogMeterMinVal*3+analogMeterMaxVal)/4), x0, y0 - 9, 2); break;
-        case 0: M5.Lcd.drawCentreString(String((analogMeterMinVal+analogMeterMaxVal)/2), x0, y0 - 7, 2); break;
-        case 1: M5.Lcd.drawCentreString(String((analogMeterMinVal+analogMeterMaxVal*3)/4), x0, y0 - 9, 2); break;
-        case 2: M5.Lcd.drawCentreString(String(analogMeterMaxVal), x0, y0 - 12, 2); break;
+        case -2:
+        	M5.Lcd.drawCentreString(String(analogMeterMinVal1), x0, y0 - 4, 1);
+        	break;
+        case -1:
+        	M5.Lcd.drawCentreString(String((analogMeterMinVal1*3+analogMeterMaxVal1)/4), x0, y0 - 2, 1);
+        	break;
+        case 0:
+        	M5.Lcd.drawCentreString(String((analogMeterMinVal1+analogMeterMaxVal1)/2), x0, y0 + 2, 1);
+        	break;
+        case 1:
+        	M5.Lcd.drawCentreString(String((analogMeterMinVal1+analogMeterMaxVal1*3)/4), x0, y0 - 2, 1);
+        	break;
+        case 2:
+        	M5.Lcd.drawCentreString(String(analogMeterMaxVal1), x0, y0 - 4, 1);
+        	break;
       }
     }
 
@@ -159,43 +175,43 @@ void analogMeterInit()
     x0 = sx * M_SIZE*100 + M_SIZE*120;
     y0 = sy * M_SIZE*100 + M_SIZE*140;
     // Draw scale arc, don't draw the last part
-    if (i < 50) M5.Lcd.drawLine(x0, y0, x1, y1, TFT_BLACK);
+    if (i < 50){
+		M5.Lcd.drawLine(x0, y0, x1, y1, TFT_BLACK);
+	}
   }
 
-  M5.Lcd.drawString(analogMeterUnit, M_SIZE*(5 + 230 - 40), M_SIZE*(119 - 20), 2); // Units at bottom right
-  M5.Lcd.drawCentreString(analogMeterName, M_SIZE*120, M_SIZE*70, 4); // Comment out to avoid font 4
-  M5.Lcd.drawRect(5, 3, M_SIZE*230, M_SIZE*119, TFT_BLACK); // Draw bezel line
 
-  analogMeterNeedle(0, 0); // Put meter needle at 0
-  M5.Lcd.setCursor(0,21*8);
+  M5.Lcd.drawRightString(analogMeterUnit1, M_SIZE*236, M_SIZE*108, 1); // Units at bottom right
+  M5.Lcd.drawCentreString(analogMeterName1, M_SIZE*120, M_SIZE*70, 2); // Comment out to avoid font 4
+
+  analogMeterNeedle(0.0,1); // Put meter needle at 0
+  M5.Lcd.setCursor(0,0);
 }
 
-void analogMeterInit(String unit_S1, String unit_S2, int min_val, int max_val){
-  analogMeterUnit = unit_S1;
-  analogMeterName = unit_S2;
-  analogMeterMinVal = min_val;
-  analogMeterMaxVal = max_val;
+void analogMeterInit(String unit_S1, String unit_S2, int min_val1, int max_val1){
+  analogMeterUnit1 = unit_S1;
+  analogMeterName1 = unit_S2;
+  analogMeterMinVal1 = min_val1;
+  analogMeterMaxVal1 = max_val1;
+  analogMeterInit();
+}
+void analogMeterInit(String unit_S1, int min_val1, int max_val1){
+  analogMeterUnit1 = unit_S1;
+  analogMeterName1 = unit_S1;
+  analogMeterMinVal1 = min_val1;
+  analogMeterMaxVal1 = max_val1;
   analogMeterInit();
 }
 
-void analogMeterInit(String unit_S, int min_val, int max_val){
-  analogMeterUnit = unit_S;
-  analogMeterName = unit_S;
-  analogMeterMinVal = min_val;
-  analogMeterMaxVal = max_val;
-  analogMeterInit();
-}
-
-void analogMeterInit(String unit_S){
-  analogMeterUnit = unit_S;
+void analogMeterInit(String unit_S1){
+  analogMeterUnit1 = unit_S1;
   analogMeterInit();
 }
 
 void analogMeterSetName(String unit_S){
-  if(unit_S.length()>7) analogMeterName = unit_S.substring(0, 7);
-  else analogMeterName = unit_S;
+		if(unit_S.length()>7) analogMeterName1 = unit_S.substring(0, 7);
+		else analogMeterName1 = unit_S;
 }
-
 
 
 // #########################################################################
@@ -205,30 +221,45 @@ void analogMeterSetName(String unit_S){
 // Smaller values OK if text not in sweep area, zero for instant movement but
 // does not look realistic... (note: 100 increments for full scale deflection)
 // #########################################################################
-void analogMeterNeedle(float value_f, byte ms_delay)
+void analogMeterNeedle(float value_fn, byte ms_delay)
 {
+  int ch=0;
   M5.Lcd.setTextColor(TFT_BLACK, TFT_WHITE);
-  char buf[8]; dtostrf(value_f, 4, 1, buf);
-  M5.Lcd.fillRect(6, M_SIZE * 99, M_SIZE * 40, 16, TFT_WHITE);
-  M5.Lcd.drawRightString(buf, M_SIZE*40, M_SIZE*(119 - 20), 2);
+  char buf[8];
+  dtostrf(value_fn, 5, 1, buf);
+  M5.Lcd.fillRect(3+ch*160, M_SIZE * 108, M_SIZE * 80, 8, TFT_WHITE);
+  M5.Lcd.drawString(buf, M_SIZE*10+ch*160, M_SIZE*(108), 1);
 
-  float delta = (float)(analogMeterMaxVal - analogMeterMinVal);
+  float value_f=0., delta=0., min=0., ltx=0.;
+  uint16_t osx = M_SIZE*120, osy = M_SIZE*120;
+  String analogMeterName;
+  int old_analog;
+
+	value_f = value_fn;
+	delta = (float)(analogMeterMaxVal1 - analogMeterMinVal1);
+	min = analogMeterMinVal1;
+	ltx = ltx1;
+	osx = osx1;
+	osy = osy1;
+	old_analog = old_analog1;
+	analogMeterName = analogMeterName1;
+  
   if( delta != 0.){
-	value_f = ( value_f - (float)analogMeterMinVal ) * 100 / delta;
+	value_f = ( value_f - min ) * 100 / delta;
   }
   int value;
   if(value_f > 0. ) value = (int)(value_f + 0.5);
   else              value = (int)(value_f - 0.5);
 
-  if (value < -10) value = -10; // Limit value to emulate needle end stops
-  if (value > 110) value = 110;
+  if (value < -7) value = -7; // Limit value to emulate needle end stops
+  if (value > 107) value = 107;
 
   // Move the needle until new value reached
   while (!(value == old_analog)) {
     if (old_analog < value) old_analog++;
     else old_analog--;
 
-    if (ms_delay == 0) old_analog = value; // Update immediately if delay is 0
+    if (ms_delay <= 0) old_analog = value; // Update immediately if delay is 0
 
     float sdeg = map(old_analog, -10, 110, -150, -30); // Map value to angle
     // Calcualte tip of needle coords
@@ -239,14 +270,14 @@ void analogMeterNeedle(float value_f, byte ms_delay)
     float tx = tan((sdeg + 90) * 0.0174532925);
 
     // Erase old needle image
-    M5.Lcd.drawLine(M_SIZE*(120 + 20 * ltx - 1), M_SIZE*(140 - 20), osx - 1, osy, TFT_WHITE);
-    M5.Lcd.drawLine(M_SIZE*(120 + 20 * ltx), M_SIZE*(140 - 20), osx, osy, TFT_WHITE);
-    M5.Lcd.drawLine(M_SIZE*(120 + 20 * ltx + 1), M_SIZE*(140 - 20), osx + 1, osy, TFT_WHITE);
+    M5.Lcd.drawLine(M_SIZE*(120 + 20 * ltx - 1) + ch * 160, M_SIZE*(140 - 20), osx - 1 + ch * 160, osy+1, TFT_WHITE);
+    M5.Lcd.drawLine(M_SIZE*(120 + 20 * ltx) + ch * 160, M_SIZE*(140 - 20), osx + ch * 160, osy, TFT_WHITE);
+    M5.Lcd.drawLine(M_SIZE*(120 + 20 * ltx + 1) + ch * 160, M_SIZE*(140 - 20), osx + 1 + ch * 160, osy+1, TFT_WHITE);
 
     // Re-plot text under needle
     M5.Lcd.setTextColor(TFT_BLACK);
-    M5.Lcd.fillRect(M_SIZE*70, M_SIZE*70, M_SIZE*100, 32,TFT_WHITE);
-    M5.Lcd.drawCentreString(analogMeterName, M_SIZE*120, M_SIZE*70, 4); // // Comment out to avoid font 4
+    M5.Lcd.fillRect(M_SIZE*70 + ch * 160, M_SIZE*70, M_SIZE*100, 16,TFT_WHITE);
+    M5.Lcd.drawCentreString(analogMeterName, M_SIZE*120 + ch * 160, M_SIZE*70, 2); // // Comment out to avoid font 4
 
     // Store new needle end coords for next erase
     ltx = tx;
@@ -255,9 +286,9 @@ void analogMeterNeedle(float value_f, byte ms_delay)
 
     // Draw the needle in the new postion, magenta makes needle a bit bolder
     // draws 3 lines to thicken needle
-    M5.Lcd.drawLine(M_SIZE*(120 + 20 * ltx - 1), M_SIZE*(140 - 20), osx - 1, osy, TFT_RED);
-    M5.Lcd.drawLine(M_SIZE*(120 + 20 * ltx), M_SIZE*(140 - 20), osx, osy, TFT_MAGENTA);
-    M5.Lcd.drawLine(M_SIZE*(120 + 20 * ltx + 1), M_SIZE*(140 - 20), osx + 1, osy, TFT_RED);
+    M5.Lcd.drawLine(M_SIZE*(120 + 20 * ltx - 1) + ch * 160, M_SIZE*(140 - 20), osx - 1 + ch * 160, osy+1, TFT_RED);
+    M5.Lcd.drawLine(M_SIZE*(120 + 20 * ltx) + ch * 160, M_SIZE*(140 - 20), osx + ch * 160, osy, TFT_MAGENTA);
+    M5.Lcd.drawLine(M_SIZE*(120 + 20 * ltx + 1) + ch * 160, M_SIZE*(140 - 20), osx + 1 + ch * 160, osy+1, TFT_RED);
 
     // Slow needle down slightly as it approaches new postion
     if (abs(old_analog - value) < 10) ms_delay += ms_delay / 5;
@@ -265,9 +296,15 @@ void analogMeterNeedle(float value_f, byte ms_delay)
     // Wait before next update
     delay(ms_delay);
   }
+
+	ltx1 = ltx;
+	osx1 = osx;
+	osy1 = osy;
+	old_analog1 = old_analog;
+
   M5.Lcd.setTextColor(TFT_WHITE);
 }
 
-void analogMeterNeedle(float value){
-	analogMeterNeedle(value, 5);
+void analogMeterNeedle(float value_fn){
+	analogMeterNeedle(value_fn, 5);
 }

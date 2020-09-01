@@ -53,13 +53,14 @@ void loop(){                                    // 繰り返し実行する関�
         "Content-Type",                         // (項目名)データ形式
         "application/json"                      // 　　(値)JSON
     );
-    http.POST(                                  // HTTP POSTを実行
+    i = http.POST(                              // HTTP POSTを実行
         "{\"writeKey\":\""                      // (項目名)writeKey
         + String(Amb_Key)                       // 　　(値)Ambientのライトキー
         + "\",\"d1\":\""                        // (項目名)d1
-        + String(lux, 3)                        // 　　(値)照度値
+        + String(lux)                           // 　　(値)照度値
         + "\"}"
     );
+    if(i != 200) M5.Lcd.printf("E(%d) ",i);     // エラー表示
     http.end();                                 // HTTPリクエストを終了
     M5.Lcd.printf("%.0f ",lux);                 // 送信した照度値を表示
     count = 0;                                  // カウンタ変数countに0を代入

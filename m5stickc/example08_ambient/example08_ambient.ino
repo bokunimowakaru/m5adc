@@ -20,6 +20,7 @@ void setup(){                                   // 起動時に一度だけ実�
     M5.begin();                                 // M5StickC用ライブラリの起動
     M5.Axp.ScreenBreath(7 + 3);                 // LCDの輝度を3に設定
     pinMode(ADC_PIN, ANALOG);                   // HAT部のGPIO36をアナログ入力に
+    pinMode(10, OUTPUT);                        // 内蔵LEDのGPIO10を出力に設定
     delay(500);                                 // 電源安定待ち時間処理0.5秒
     WiFi.mode(WIFI_STA);                        // 無線LANを【子機】モードに設定
     WiFi.begin(SSID,PASS);                      // 無線LANアクセスポイントへ接続
@@ -53,13 +54,14 @@ void loop(){                                    // 繰り返し実行する関�
         "Content-Type",                         // (項目名)データ形式
         "application/json"                      // 　　(値)JSON
     );
-    http.POST(                                  // HTTP POSTを実行
+    i = http.POST(                              // HTTP POSTを実行
         "{\"writeKey\":\""                      // (項目名)writeKey
         + String(Amb_Key)                       // 　　(値)Ambientのライトキー
         + "\",\"d1\":\""                        // (項目名)d1
-        + String(lux, 3)                        // 　　(値)照度値
+        + String(lux)                           // 　　(値)照度値
         + "\"}"
     );
+    digitalWrite(10, i != 200);                 // エラー発生表示
     http.end();                                 // HTTPリクエストを終了
     count = 0;                                  // カウンタ変数countに0を代入
 }
