@@ -30,7 +30,6 @@ void setup(){                                   // 起動時に一度だけ実�
 }
 
 void loop(){                                    // 繰り返し実行する関数
-    WiFiUDP udp;                                // UDP通信用の変数(オブジェクト)
     int adc;                                    // 変数adcを定義
     float mv;                                   // 浮動小数点数型変数mvを定義
     adc = analogRead(ADC_PIN);                  // ADC値をadcへ代入
@@ -47,6 +46,7 @@ void loop(){                                    // 繰り返し実行する関�
     M5.Lcd.printf("voltage %.3f V\n", mv / 1000); // 電圧値VをLCDに表示
 
     /* UDP送信 */
+    WiFiUDP udp;                                // UDP通信用の変数(オブジェクト)
     udp.beginPacket(IP, PORT);                  // UDP送信先を設定
     udp.printf("%s%f\n", DEVICE, mv / 1000);    // デバイス名と電圧値(V)を送信
     udp.endPacket();                            // UDP送信の終了(実際に送信する)
