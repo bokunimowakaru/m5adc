@@ -1,39 +1,45 @@
 /***********************************************************************
-analogMeterInit
-analogMeterNeedle
+メータ表示用ライブラリ lib_analogMeter.ino
 
-本ソースコードは下記からダウンロードし、国野亘がロガー用に改変しました。
+関数名              内容                第1引数 第2引数 第3引数 第4引数
+------------------------------------------------------------------------
+analogMeterInit     メータ画面の初期化  単位    Meter名 最小値  最大値
+analogMeterSetName  メータ名の変更      Meter名 －      －      －
+analogMeterNeedle   メータの針を移動    値      移動ｔ  －      －
+
+本ソースコードは下記からダウンロードし、一部、改変したものです。
 https://github.com/m5stack/M5Stack/blob/master/examples/Advanced/Display/TFT_Meter_linear/TFT_Meter_linear.ino
 
-・160 x 80 サイズのメータ
+ダウンロード日：2019/12/27
 
 改変部の著作権は国野亘にあります。
 配布は自由ですが権利情報の変更は不可。補償や責任を負いません。
-Copyright (c) 2016-2020 Wataru KUNINO
+Copyright (c) 2019-2020 Wataru KUNINO
+https://github.com/bokunimowakaru/m5s/blob/master/LICENSE
+https://github.com/bokunimowakaru/m5adc/blob/master/LICENSE
 
-元のライセンスについては下記を参照してください。
-https://github.com/m5stack/M5Stack/blob/master/LICENSE
+筆者による改変部以外については、原作者（M5Stack社、Bodmer氏、Adafruit社）の
+ライセンスにしたがってご利用下さい。
 
-m5stack/M5Stack is licensed under the MIT License
-
-2019/12/27
-
-以下、TFT_Meter_linear
+ライセンスに関する参考情報：
+・https://github.com/m5stack/M5Stack/blob/master/LICENSE
+    m5stack/M5Stack is licensed under the MIT License
+・https://www.instructables.com/id/Arduino-TFT-display-and-font-library/
+・https://github.com/Bodmer/TFT_eSPI/blob/master/license.txt
+    Software License Agreement (FreeBSD License)
+    Copyright (c) 2017 Bodmer (https://github.com/Bodmer)
+・https://github.com/adafruit/Adafruit_ILI9341
+    This is our library for the Adafruit  ILI9341 Breakout and Shield
+    ----> http://www.adafruit.com/products/1651
+    Check out the links above for our tutorials and wiring diagrams
+    These displays use SPI to communicate, 4 or 5 pins are required to
+    interface (RST is optional)
+    Adafruit invests time and resources providing this open source code,
+    please support Adafruit and open-source hardware by purchasing
+    products from Adafruit!
+    Written by Limor Fried/Ladyada for Adafruit Industries.
+    MIT license, all text above must be included in any redistribution
 */
-/*
- An example analogue meter using a ILI9341 TFT LCD screen
-
- Needs Font 2 (also Font 4 if using large scale label)
-
- Make sure all the display driver and pin comnenctions are correct by
- editting the User_Setup.h file in the TFT_eSPI library folder.
-
- #########################################################################
- ###### DON'T FORGET TO UPDATE THE User_Setup.h FILE IN THE LIBRARY ######
- #########################################################################
- 
-Updated by Bodmer for variable meter size
- */
 
 // Define meter size as 1 for M5.Lcd.rotation(0) or 1.3333 for M5.Lcd.rotation(1)
 #define M_SIZE 0.6666
