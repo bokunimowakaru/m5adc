@@ -69,7 +69,7 @@ M5Stack 用のサンプル・プログラムは m5stack フォルダ、M5Stick C
 	M5Stack C に 照度センサ NJL7502L を接続したときの様子。  
 
 ## IoT センサ Arduino IDE 用 M5Stack 開発環境
-以下に、Arduino IDE 用の M5Stack の開発環境をセットアップする方法を示します。詳細については、M5Stack公式サイト等をご覧ください。  
+以下に、Arduino IDE 用の M5Stack の開発環境をセットアップする方法を示します。詳細については、![セットアップ方法・説明書](https://github.com/bokunimowakaru/m5adc/blob/master/セットアップ方法.pdf)をご覧ください。  
 
 - イントール方法：  
 	1. Arduino IDE  
