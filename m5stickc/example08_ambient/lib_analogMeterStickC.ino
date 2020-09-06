@@ -13,7 +13,7 @@ https://github.com/m5stack/M5Stack/blob/master/examples/Advanced/Display/TFT_Met
 ダウンロード日：2019/12/27
 
 改変部の著作権は国野亘にあります。
-配布は自由ですが権利情報の変更は不可。補償や責任を負いません。
+配布は自由ですが権利情報の変更は不可。無保証。権利者は責任を負いません。
 Copyright (c) 2019-2020 Wataru KUNINO
 https://github.com/bokunimowakaru/m5s/blob/master/LICENSE
 https://github.com/bokunimowakaru/m5adc/blob/master/LICENSE
