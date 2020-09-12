@@ -62,11 +62,18 @@ M5Stack 用のサンプル・プログラムは m5stack フォルダ、M5Stick C
 	A/Dコンバータの読み値を Wi-Fi UDP 送信します  
 
 - example07_illum  
-	Example 07: Wi-Fi Illumination Sensor for M5StickC Wi-Fi  
+	Example 07: Wi-Fi Illumination Sensor  
 	照度センサ NJL7502L (新日本無線) の読み値を Wi-Fi UDP送信します  
 	
 	![NJL7502L](https://github.com/bokunimowakaru/m5adc/blob/image/image/DSC_0432.jpg)  
 	M5Stack C に 照度センサ NJL7502L を接続したときの様子。  
+
+- example08_ambient  
+	Example 08: Wi-Fi Illumination Sensor for Ambient  
+	照度センサ NJL7502L (新日本無線) の読み値を Ambient へ送信します  
+	
+	![ambient](https://github.com/bokunimowakaru/m5adc/blob/image/image/ambient01.jpg)  
+	クラウド・サービス Ambient で照度値を表示したときの様子。  
 
 ## IoT センサ Arduino IDE 用 M5Stack 開発環境
 以下に、Arduino IDE 用の M5Stack の開発環境をセットアップする方法を示します。詳細については、[セットアップ方法・説明書](https://github.com/bokunimowakaru/m5adc/blob/master/セットアップ方法.pdf)をご覧ください。  
