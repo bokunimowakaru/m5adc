@@ -1,5 +1,5 @@
 /*******************************************************************************
-Example 07: Wi-Fi Illumination Sensor for M5StickC Wi-Fi
+Example 07: Wi-Fi Illumination Sensor for M5StickC
 ・照度センサ NJL7502L (新日本無線) の読み値を Wi-Fi UDP送信します
 
                                           Copyright (c) 2019-2020 Wataru KUNINO

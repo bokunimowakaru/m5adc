@@ -1,5 +1,5 @@
 /*******************************************************************************
-Example 06: ADC Input Voltage UDP Sender for M5StickC Wi-Fi
+Example 06: ADC Input Voltage UDP Sender for M5StickC
 ・A/Dコンバータの読み値をWi-Fi UDP送信します
 
                                           Copyright (c) 2019-2020 Wataru KUNINO
