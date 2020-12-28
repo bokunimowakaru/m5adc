@@ -1,5 +1,5 @@
 /*******************************************************************************
-Example 05: ADS1100 Input Voltage Meter for M5Stack [Auto Range Display]
+Example 05: ADS1115 Input Voltage Meter for M5Stack [Auto Range Display]
 ・M5Stack製オプション Voltmeter UNIT (TI ADS1115)を使用
 ・A/Dコンバータ ADS1115 の読み値をアナログ・メータ表示します【自動レンジ対応版】
 ・Voltmeter UNIT内のEEPROMに保存されている工場出荷時の校正値の補正機能つき
