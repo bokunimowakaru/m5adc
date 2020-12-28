@@ -1,5 +1,5 @@
 /*******************************************************************************
-Example 05: ADS1115 Input Voltage Meter for M5Stack [Auto Range Display]
+Example 05: ADS1115 Input Voltage Meter for M5StickC [Auto Range Display]
 ・M5Stack製オプション Voltmeter UNIT (TI ADS1115)を使用
 ・A/Dコンバータ ADS1115 の読み値をアナログ・メータ表示します【自動レンジ対応版】
 ・Voltmeter UNIT内のEEPROMに保存されている工場出荷時の校正値の補正機能つき
@@ -19,15 +19,15 @@ Voltmeter UNIT（M5Stack製）：
 https://docs.m5stack.com/#/en/unit/vmeter
 *******************************************************************************/
 
-#include <M5Stack.h>                            // M5Stack用ライブラリ
+#include <M5StickC.h>                           // M5StickC用ライブラリ
 #include <Wire.h>                               // I2C通信用ライブラリ
 
 int range = 0;                                  // 自動レンジ用
 float cal = 1.0;                                // 校正値
 
 void setup(){                                   // 起動時に一度だけ実行する関数
-    M5.begin();                                 // M5Stack用ライブラリの起動
-    Wire.begin();                               // I2Cを初期化
+    M5.begin();                                 // M5StickC用ライブラリの起動
+    Wire.begin(0,26);                           // I2Cを初期化(GPIO 0, GPIO 26)
     
     /* 校正値の読み取り用 */
     Wire.beginTransmission(0x53);               // EEPROM(0x53)との通信を開始
@@ -50,7 +50,7 @@ void setup(){                                   // 起動時に一度だけ実�
     Wire.write(0x08);                           // PGA=100b,FSR±0.512V
     Wire.write(0x03);                           // DR=000b,Rate=8SPS
     Wire.endTransmission();                     // ADS1115(0x49)との通信を終了
-    M5.Lcd.setBrightness(100);                  // LCDの輝度を100に設定
+    M5.Axp.ScreenBreath(7 + 3);                 // LCDの輝度を3に設定
 }
 
 void loop(){                                    // 繰り返し実行する関数

@@ -1,5 +1,5 @@
 /*******************************************************************************
-Example 05: ADS1115 Input Voltage Meter for M5Stack [Auto Range Display]
+Example 05: ADS1115 Input Voltage Meter for M5StickC Plus [Auto Range Display]
 ・M5Stack製オプション Voltmeter UNIT (TI ADS1115)を使用
 ・A/Dコンバータ ADS1115 の読み値をアナログ・メータ表示します【自動レンジ対応版】
 ・Voltmeter UNIT内のEEPROMに保存されている工場出荷時の校正値の補正機能つき
@@ -7,27 +7,27 @@ Example 05: ADS1115 Input Voltage Meter for M5Stack [Auto Range Display]
                                           Copyright (c) 2019-2020 Wataru KUNINO
 ********************************************************************************
 【参考文献】
-Arduino IDE 開発環境イントール方法：
-https://github.com/m5stack/M5Stack/blob/master/docs/getting_started_ja.md
-https://docs.m5stack.com/#/en/related_documents/Arduino_IDE
+https://docs.m5stack.com/#/en/core/m5stickc_plus
+https://github.com/m5stack/M5StickC-Plus
 
-M5Stack Arduino Library API 情報：
-https://docs.m5stack.com/#/ja/api
-https://docs.m5stack.com/#/en/arduino/arduino_api
+【M5StickC Plue の注意点】
+・電源ONは電源ボタン2秒長押し、OFFは6秒。
+・対応ボーレート：1200 ~115200, 250K, 500K, 750K, 1500K
+・G36/G25ポートが同一端子に接続されている。使用しないポートをオープンに設定する
 
 Voltmeter UNIT（M5Stack製）：
 https://docs.m5stack.com/#/en/unit/vmeter
 *******************************************************************************/
 
-#include <M5Stack.h>                            // M5Stack用ライブラリ
+#include <M5StickCPlus.h>                       // M5StickCPlus用ライブラリ
 #include <Wire.h>                               // I2C通信用ライブラリ
 
 int range = 0;                                  // 自動レンジ用
 float cal = 1.0;                                // 校正値
 
 void setup(){                                   // 起動時に一度だけ実行する関数
-    M5.begin();                                 // M5Stack用ライブラリの起動
-    Wire.begin();                               // I2Cを初期化
+    M5.begin();                                 // M5StickC用ライブラリの起動
+    Wire.begin(0,26);                           // I2Cを初期化(GPIO 0, GPIO 26)
     
     /* 校正値の読み取り用 */
     Wire.beginTransmission(0x53);               // EEPROM(0x53)との通信を開始
@@ -50,7 +50,7 @@ void setup(){                                   // 起動時に一度だけ実�
     Wire.write(0x08);                           // PGA=100b,FSR±0.512V
     Wire.write(0x03);                           // DR=000b,Rate=8SPS
     Wire.endTransmission();                     // ADS1115(0x49)との通信を終了
-    M5.Lcd.setBrightness(100);                  // LCDの輝度を100に設定
+    M5.Axp.ScreenBreath(7 + 3);                 // LCDの輝度を3に設定
 }
 
 void loop(){                                    // 繰り返し実行する関数
