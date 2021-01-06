@@ -79,7 +79,7 @@ void loop(){                                    // 繰り返し実行する関�
         err2 += pow(e , 2.);
         if( fabsf(e) > fabsf(emax) ) emax = e;
         y = 116 - (int)(e / 3.3 * 232. + .5);   // DAC出力とADC入力の誤差を計算
-        M5.Lcd.drawPixel(x, 116, RED);          // 誤差0の値(80)をプロット
+        M5.Lcd.drawPixel(x, 116, RED);          // 誤差0の直線をプロット
         M5.Lcd.drawPixel(x, y, WHITE);          // 誤差値をプロット
         if(file && prev != dac){
             char s[256];

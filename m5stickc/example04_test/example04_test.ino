@@ -41,7 +41,7 @@ void loop(){                                    // 繰り返し実行する関�
         M5.Lcd.drawPixel(x, 160 - 160 * dac / 255, GREEN);  // DAC値をプロット
         M5.Lcd.drawPixel(x, 160 - 160 * adc /4095, WHITE);  // ADC値をプロット
         y = 80 - adc / 16 + dac;                // DAC出力とADC入力の誤差を計算
-        M5.Lcd.drawPixel(x, 80, RED);           // 誤差0の値(80)をプロット
+        M5.Lcd.drawPixel(x, 80, RED);           // 誤差0の直線をプロット
         M5.Lcd.drawPixel(x, y, WHITE);          // 誤差値をプロット
     }
     delay(1000);
