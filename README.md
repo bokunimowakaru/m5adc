@@ -38,13 +38,19 @@ M5Stack 用のサンプル・プログラムは m5stack フォルダ、M5Stick C
 - example04_test  
 	Example 04: ADC for Loopback Tester  
 	A/Dコンバータの読み値の誤差をグラフ表示します  
+	（DAC_PINとADC_PINをジャンパ線で接続していてください。）  
 	
 	<img src="https://github.com/bokunimowakaru/m5adc/blob/image/image/DSC_0389.jpg" height="300">
 	<img src="https://github.com/bokunimowakaru/m5adc/blob/image/image/DSC_0440.jpg"><br>  
 	左下から右上に向かう斜め曲線の横軸はDAC出力、縦軸はADC値。斜め直線との乖離が誤差。中央の横曲線は誤差。  
 
+- example04_test_val  
+	起動時にD/Aコンバータの出力を使って校正値を保持し、補正します  
+	（DAC_PINとADC_PINをジャンパ線で接続していてください。）  
+
 - example04_test_sd (M5Stackのみ)  
 	A/Dコンバータの非線形歪を補正し、変換精度を高めます  
+	（DAC_PINとADC_PINをジャンパ線で接続していてください。）  
 	
 	![非線形歪補正効果](https://github.com/bokunimowakaru/m5adc/blob/image/image/fig03.jpg)  
 	左＝補正無し、中央＝歪補正有、右＝歪補正＋アッテネータ調節
