@@ -44,7 +44,7 @@ M5Stack 用のサンプル・プログラムは m5stack フォルダ、M5Stick C
 	<img src="https://github.com/bokunimowakaru/m5adc/blob/image/image/DSC_0440.jpg"><br>  
 	左下から右上に向かう斜め曲線の横軸はDAC出力、縦軸はADC値。斜め直線との乖離が誤差。中央の横曲線は誤差。  
 
-- example04_test_val  
+- example04_test_cal  
 	起動時にD/Aコンバータの出力を使って校正値を保持し、補正します  
 	（DAC_PINとADC_PINをジャンパ線で接続していてください。）  
 
