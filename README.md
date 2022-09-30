@@ -10,10 +10,10 @@ M5Stack 製の IoTデバイス M5Stack または M5StickC と内蔵の A/Dコン
 ## 対応 IoT センサ・デバイス  
 以下のデバイスを使った IoT センサ を製作します（両方のデバイスのサンプル・プログラムを用意してあるので、実験に必要なのは、どちらか1台です）。  
 - M5Stack  
-	![M5Stack](https://github.com/bokunimowakaru/m5adc/blob/image/image/DSC_0415.jpg)
+	![M5Stack](/image/DSC_0415.jpg)
 
 - M5StickC  
-	![M5StickC](https://github.com/bokunimowakaru/m5adc/blob/image/image/DSC_0418.jpg)
+	![M5StickC](/image/DSC_0418.jpg)
 
 --------------------------------------------------------------------------------
 
@@ -32,7 +32,7 @@ M5Stack 用のサンプル・プログラムは m5stack フォルダ、M5Stick C
 	Example 03: ADC Input Voltage Meter  
 	A/Dコンバータの読み値をアナログ・メータ表示します  
 	
-	![メータ表示](https://github.com/bokunimowakaru/m5adc/blob/image/image/DSC_0393.jpg)  
+	![メータ表示](/image/DSC_0393.jpg)  
 	M5Stick C でアナログ・メータ表示を行ったときの様子。
 
 - example04_test  
@@ -40,8 +40,8 @@ M5Stack 用のサンプル・プログラムは m5stack フォルダ、M5Stick C
 	A/Dコンバータの読み値の誤差をグラフ表示します  
 	（DAC_PINとADC_PINをジャンパ線で接続していてください。）  
 	
-	<img src="https://github.com/bokunimowakaru/m5adc/blob/image/image/DSC_0389.jpg" height="300">
-	<img src="https://github.com/bokunimowakaru/m5adc/blob/image/image/DSC_0440.jpg"><br>  
+	<img src="/image/DSC_0389.jpg" height="300">
+	<img src="/image/DSC_0440.jpg"><br>  
 	左下から右上に向かう斜め曲線の横軸はDAC出力、縦軸はADC値。斜め直線との乖離が誤差。中央の横曲線は誤差。  
 
 - example04_test_cal  
@@ -52,7 +52,7 @@ M5Stack 用のサンプル・プログラムは m5stack フォルダ、M5Stick C
 	A/Dコンバータの非線形歪を補正し、変換精度を高めます  
 	（DAC_PINとADC_PINをジャンパ線で接続していてください。）  
 	
-	![非線形歪補正効果](https://github.com/bokunimowakaru/m5adc/blob/image/image/fig03.jpg)  
+	![非線形歪補正効果](/image/fig03.jpg)  
 	左＝補正無し、中央＝歪補正有、右＝歪補正＋アッテネータ調節
 
 - example05_ads1100
@@ -60,7 +60,7 @@ M5Stack 用のサンプル・プログラムは m5stack フォルダ、M5Stick C
 	M5Stack製オプション ADC HAT (TI ADS1100)を使用  
 	A/Dコンバータ ADS1100 の読み値をアナログ・メータ表示します  
 	  
-	![ADS1100](https://github.com/bokunimowakaru/m5adc/blob/image/image/DSC_0400.jpg)  
+	![ADS1100](/image/DSC_0400.jpg)  
 	M5Stack製オプション ADC HAT (TI ADS1100)を装着したときの様子。  
 
 - example06_udp  
@@ -71,14 +71,14 @@ M5Stack 用のサンプル・プログラムは m5stack フォルダ、M5Stick C
 	Example 07: Wi-Fi Illumination Sensor  
 	照度センサ NJL7502L (新日本無線) の読み値を Wi-Fi UDP送信します  
 	
-	![NJL7502L](https://github.com/bokunimowakaru/m5adc/blob/image/image/DSC_0432.jpg)  
+	![NJL7502L](/image/DSC_0432.jpg)  
 	M5Stack C に 照度センサ NJL7502L を接続したときの様子。  
 
 - example08_ambient  
 	Example 08: Wi-Fi Illumination Sensor for Ambient  
 	照度センサ NJL7502L (新日本無線) の読み値を Ambient へ送信します  
 	
-	![ambient](https://github.com/bokunimowakaru/m5adc/blob/image/image/ambient01.jpg)  
+	![ambient](/image/ambient01.jpg)  
 	クラウド・サービス Ambient で照度値を表示したときの様子。  
 
 ## IoT センサ Arduino IDE 用 M5Stack 開発環境
