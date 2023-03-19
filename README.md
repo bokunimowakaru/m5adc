@@ -133,7 +133,7 @@ M5Stack 用のサンプル・プログラムは m5stack フォルダ、M5Stick C
 * 提供情報や配布ソフトによって、被害が生じた場合であっても、当方は、一切、補償いたしません。  
 * ライセンスが明記されていないファイルについても、同様です。  
 
-### MIT License [LICENSE](https://github.com/bokunimowakaru/m5Janken/blob/master/LICENSE)
+### MIT License [LICENSE](https://raw.githubusercontent.com/bokunimowakaru/m5adc/master/LICENSE)
 
 ### Copyright (c) 2020-2021 [Wataru KUNINO @ bokunimo.net](https://bokunimo.net)
 
