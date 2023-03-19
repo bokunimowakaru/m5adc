@@ -40,8 +40,8 @@ M5Stack 用のサンプル・プログラムは m5stack フォルダ、M5Stick C
 	A/Dコンバータの読み値の誤差をグラフ表示します  
 	（DAC_PINとADC_PINをジャンパ線で接続していてください。）  
 	
-	<img src="/image/DSC_0389.jpg" height="300">
-	<img src="/image/DSC_0440.jpg"><br>  
+	<img src="https://raw.githubusercontent.com/bokunimowakaru/m5adc/image/image/DSC_0389.jpg" height="300">
+	<img src="https://raw.githubusercontent.com/bokunimowakaru/m5adc/image/image/DSC_0440.jpg"><br>  
 	左下から右上に向かう斜め曲線の横軸はDAC出力、縦軸はADC値。斜め直線との乖離が誤差。中央の横曲線は誤差。  
 
   詳細については、[READMEforEx4toEx5.pdf](https://github.com/bokunimowakaru/m5adc/blob/master/READMEforEx4toEx5.pdf)をご覧ください。  
