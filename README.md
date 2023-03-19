@@ -44,9 +44,13 @@ M5Stack 用のサンプル・プログラムは m5stack フォルダ、M5Stick C
 	<img src="/image/DSC_0440.jpg"><br>  
 	左下から右上に向かう斜め曲線の横軸はDAC出力、縦軸はADC値。斜め直線との乖離が誤差。中央の横曲線は誤差。  
 
+  詳細については、[READMEforEx4toEx5.pdf](https://github.com/bokunimowakaru/m5adc/blob/master/READMEforEx4toEx5.pdf)をご覧ください。  
+
 - example04_test_cal  
 	起動時にD/Aコンバータの出力を使って校正値を保持し、補正します  
 	（DAC_PINとADC_PINをジャンパ線で接続していてください。）  
+
+  詳細については、[READMEforEx4toEx5.pdf](https://github.com/bokunimowakaru/m5adc/blob/master/READMEforEx4toEx5.pdf)をご覧ください。  
 
 - example04_test_sd (M5Stackのみ)  
 	A/Dコンバータの非線形歪を補正し、変換精度を高めます  
@@ -55,6 +59,8 @@ M5Stack 用のサンプル・プログラムは m5stack フォルダ、M5Stick C
 	![非線形歪補正効果](/image/fig03.jpg)  
 	左＝補正無し、中央＝歪補正有、右＝歪補正＋アッテネータ調節
 
+  詳細については、[READMEforEx4toEx5.pdf](https://github.com/bokunimowakaru/m5adc/blob/master/READMEforEx4toEx5.pdf)をご覧ください。  
+
 - example05_ads1100
 	Example 05: ADS1100 Input Voltage Meter【自動レンジ対応版】  
 	M5Stack製オプション ADC HAT (TI ADS1100)を使用  
@@ -62,6 +68,8 @@ M5Stack 用のサンプル・プログラムは m5stack フォルダ、M5Stick C
 	  
 	![ADS1100](/image/DSC_0400.jpg)  
 	M5Stack製オプション ADC HAT (TI ADS1100)を装着したときの様子。  
+
+  詳細については、[READMEforEx4toEx5.pdf](https://github.com/bokunimowakaru/m5adc/blob/master/READMEforEx4toEx5.pdf)をご覧ください。  
 
 - example06_udp  
 	Example 06: ADC Input Voltage UDP Sender  
@@ -82,28 +90,19 @@ M5Stack 用のサンプル・プログラムは m5stack フォルダ、M5Stick C
 	クラウド・サービス Ambient で照度値を表示したときの様子。  
 
 ## IoT センサ Arduino IDE 用 M5Stack 開発環境
-以下に、Arduino IDE 用の M5Stack の開発環境をセットアップする方法を示します。詳細については、[セットアップ方法・説明書](https://github.com/bokunimowakaru/m5adc/blob/master/セットアップ方法.pdf)をご覧ください。  
-
-- イントール方法：  
-	1. Arduino IDE  
-		下記からダウンロードしてインストールしてください  
-		- https://www.arduino.cc/en/Main/Software  
-	2. ESP32ボードマネージャ  
-		Arduino IDEの「ファイル」メニュー内の「環境設定」を開き、「追加のボードマネージャのURL」に下記を追加してください。  
-		- https://dl.espressif.com/dl/package_esp32_index.json  
-	3. ESP32ライブラリ  
-		Arduino IDEの「ツール」メニュー内の「ボード」を選択し、「ボードマネージャ」を開き、検索欄に「esp32」を入力し、下記をインストールしてください。  
-		- esp32 by Espressid Systems  
-	4. M5Stackライブラリ(M5Core and M5Stick)  
-		Arduino IDEの「スケッチ」メニュー内の「ライブラリをインクルード」を選択し、「ライブラリを管理」を開き、検索欄に下記を入力し、インストールしてください。  
-		- M5Stack  
-		- M5StickC  
-	5. Arduino IDEの[ツール］メニュー内の［ボード］で、使用するデバイスを選択してください。  
-		- M5Srack-Core-ESP32  
-		- M5Stick-C  
+以下に、Arduino IDE 用の M5Stack の開発環境をセットアップする方法を示します。  
 	
-- M5Stack公式サイトの情報：  
-	（最新版・英語）https://docs.m5stack.com/#/en/arduino/arduino_development  
+- M5Stack公式サイトのセットアップ方法に関する情報（英語）：  
+
+	Arduino IDE と M5Stack 用ボードマネージャ
+	https://docs.m5stack.com/en/quick_start/arduino
+	https://docs.m5stack.com/#/en/arduino/arduino_development  
+	
+	M5Stack BASIC
+	https://docs.m5stack.com/en/quick_start/m5core/arduino
+	
+	M5StiickC
+	https://docs.m5stack.com/en/quick_start/m5stickc/arduino  
 
 --------------------------------------------------------------------------------
 
