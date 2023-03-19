@@ -95,14 +95,14 @@ M5Stack 用のサンプル・プログラムは m5stack フォルダ、M5Stick C
 	
 - M5Stack公式サイトのセットアップ方法に関する情報（英語）：  
 
-	Arduino IDE と M5Stack 用ボードマネージャ
-	https://docs.m5stack.com/en/quick_start/arduino
+	Arduino IDE と M5Stack 用ボードマネージャ  
+	https://docs.m5stack.com/en/quick_start/arduino  
 	https://docs.m5stack.com/#/en/arduino/arduino_development  
 	
-	M5Stack BASIC
-	https://docs.m5stack.com/en/quick_start/m5core/arduino
+	M5Stack BASIC  
+	https://docs.m5stack.com/en/quick_start/m5core/arduino  
 	
-	M5StiickC
+	M5StiickC  
 	https://docs.m5stack.com/en/quick_start/m5stickc/arduino  
 
 --------------------------------------------------------------------------------
