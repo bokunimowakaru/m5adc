@@ -82,28 +82,19 @@ M5Stack 用のサンプル・プログラムは m5stack フォルダ、M5Stick C
 	クラウド・サービス Ambient で照度値を表示したときの様子。  
 
 ## IoT センサ Arduino IDE 用 M5Stack 開発環境
-以下に、Arduino IDE 用の M5Stack の開発環境をセットアップする方法を示します。詳細については、[セットアップ方法・説明書](https://github.com/bokunimowakaru/m5adc/blob/master/セットアップ方法.pdf)をご覧ください。  
-
-- イントール方法：  
-	1. Arduino IDE  
-		下記からダウンロードしてインストールしてください  
-		- https://www.arduino.cc/en/Main/Software  
-	2. ESP32ボードマネージャ  
-		Arduino IDEの「ファイル」メニュー内の「環境設定」を開き、「追加のボードマネージャのURL」に下記を追加してください。  
-		- https://dl.espressif.com/dl/package_esp32_index.json  
-	3. ESP32ライブラリ  
-		Arduino IDEの「ツール」メニュー内の「ボード」を選択し、「ボードマネージャ」を開き、検索欄に「esp32」を入力し、下記をインストールしてください。  
-		- esp32 by Espressid Systems  
-	4. M5Stackライブラリ(M5Core and M5Stick)  
-		Arduino IDEの「スケッチ」メニュー内の「ライブラリをインクルード」を選択し、「ライブラリを管理」を開き、検索欄に下記を入力し、インストールしてください。  
-		- M5Stack  
-		- M5StickC  
-	5. Arduino IDEの[ツール］メニュー内の［ボード］で、使用するデバイスを選択してください。  
-		- M5Srack-Core-ESP32  
-		- M5Stick-C  
+以下に、Arduino IDE 用の M5Stack の開発環境をセットアップする方法を示します。  
 	
-- M5Stack公式サイトの情報：  
-	（最新版・英語）https://docs.m5stack.com/#/en/arduino/arduino_development  
+- M5Stack公式サイトのセットアップ方法に関する情報（英語）：  
+
+	Arduino IDE と M5Stack 用ボードマネージャ
+	https://docs.m5stack.com/en/quick_start/arduino
+	https://docs.m5stack.com/#/en/arduino/arduino_development  
+	
+	M5Stack BASIC
+	https://docs.m5stack.com/en/quick_start/m5core/arduino
+	
+	M5StiickC
+	https://docs.m5stack.com/en/quick_start/m5stickc/arduino  
 
 --------------------------------------------------------------------------------
 
