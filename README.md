@@ -126,8 +126,25 @@ M5Stack 用のサンプル・プログラムは m5stack フォルダ、M5Stick C
 	2019/11/24 19:38, 192.168.1.3, adcnv_5,1.571  
 
 --------------------------------------------------------------------------------
+## ライセンス(全般)
 
-### MIT License
-- Free to use, but keep some conditions: [LICENSE](https://github.com/bokunimowakaru/m5Janken/blob/master/LICENSE)
+* ライセンスについては各ソースリストならびに各フォルダ内のファイルに記載の通りです。  
+* 使用・変更・配布は可能ですが、権利表示を残してください。  
+* 提供情報や配布ソフトによって、被害が生じた場合であっても、当方は、一切、補償いたしません。  
+* ライセンスが明記されていないファイルについても、同様です。  
 
-## Copyright (c) 2020-2021 [Wataru KUNINO @ bokunimo.net](https://bokunimo.net)
+### MIT License [LICENSE](https://github.com/bokunimowakaru/m5Janken/blob/master/LICENSE)
+
+### Copyright (c) 2020-2021 [Wataru KUNINO @ bokunimo.net](https://bokunimo.net)
+
+----------------------------------------------------------------
+
+## GitHub Pages (This Document)
+* [https://git.bokunimo.com/m5adc/](https://git.bokunimo.com/m5adc/)  
+
+----------------------------------------------------------------
+
+# git.bokunimo.com GitHub Pages site
+[http://git.bokunimo.com/](http://git.bokunimo.com/)  
+
+----------------------------------------------------------------
